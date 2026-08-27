@@ -1,0 +1,941 @@
+/* ===================================================
+   EBS - Agenda
+   Estrutura Base
+=================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#F4F5F7;
+}
+
+/* ===================================================
+   Estrutura Principal
+=================================================== */
+
+.dashboard {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ===================================================
+   Menu Lateral
+=================================================== */
+
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    min-height: 100vh;
+
+    background: linear-gradient(
+        180deg,
+        #8b1e3f,
+        #c2185b
+    );
+
+    color: white;
+    padding: 22px 18px;
+    overflow-y: auto;
+}
+
+.logo-menu {
+    width: 105px;
+    height: 105px;
+    display: block;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.titulo-menu{
+    text-align:center;
+    font-size:16px;
+    line-height:1.3;
+    margin-bottom:18px;
+    font-weight: 400;
+}
+
+.sidebar hr{
+    border:none;
+    border-top:1px solid rgba(255,255,255,.20);
+    margin-bottom:18px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 11px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ================================
+   MENU LATERAL - PADRÃO EBS
+================================ */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 11px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.menu a.ativo {
+    background: rgba(255, 255, 255, 0.18);
+    font-weight: bold;
+}
+
+/* ===================================================
+   Conteúdo Principal
+=================================================== */
+
+.content {
+    flex: 1;
+    padding: 40px 50px;
+    background: #F8F8FA;
+
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+ /* ===================================================
+   Cabeçalho da Agenda
+=================================================== */
+
+.header-agenda{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:30px;
+    width:100%;
+}
+
+.content h1{
+    color:#8B1E3F;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.subtitulo{
+    color:#777;
+    font-size:17px;
+}
+
+.btn-novo{
+    background:#8B1E3F;
+    color:white;
+    border:none;
+    padding:14px 24px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-novo:hover{
+    background:#6F1732;
+}
+/* ===================================================
+   Layout da Agenda Premium
+=================================================== */
+
+.agenda-layout{
+    display:grid;
+    grid-template-columns: 3fr 1fr;
+    gap:24px;
+    align-items:start;
+    margin-top:25px;
+}
+
+.agenda-principal{
+    background:#FFFFFF;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
+}
+
+.agenda-lateral{
+    background:#FFFFFF;
+    border-radius:18px;
+    min-height:700px;
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
+    padding:20px;
+    overflow: visible;
+    height: auto;
+}
+
+
+/* =====================================================
+   CORES DOS ATENDIMENTOS POR PROFISSIONAL
+   ===================================================== */
+
+/* Fran */
+.agendamento[data-profissional="Fran"] {
+    background: #DFF5E3;
+    border-left: 4px solid #6DBE78;
+}
+
+/* Sandy */
+.agendamento[data-profissional="Sandy"] {
+    background: #FFF7CC;
+    border-left: 4px solid #E5C84A;
+}
+
+/* Juliana */
+.agendamento[data-profissional="Juliana"] {
+    background: #E8F0FF;
+    border-left: 4px solid #6D9EEB;
+}
+
+/* Ana */
+.agendamento[data-profissional="Ana"] {
+    background: #F8E5F4;
+    border-left: 4px solid #D88BC4;
+}
+
+/* ===================================================
+   Navegação da Agenda Semanal
+=================================================== */
+
+.agenda-navegacao{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.periodo-agenda{
+    text-align:center;
+}
+
+.periodo-agenda h2{
+    color:#8B1E3F;
+    font-size:22px;
+    margin-bottom:5px;
+}
+
+.periodo-agenda p{
+    color:#777;
+    font-size:14px;
+}
+
+.btn-anterior,
+.btn-proximo{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:10px;
+    background:#8B1E3F;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-anterior:hover,
+.btn-proximo:hover{
+    background:#6F1732;
+}
+/* ===================================================
+   Dias da Agenda Semanal
+=================================================== */
+
+.dias-semana{
+    display:grid;
+    grid-template-columns:repeat(7, 1fr);
+    width:100%;
+    gap:10px;
+    margin-top:20px;
+    border-top:1px solid #EEEEEE;
+    padding-top:20px;
+}
+
+.dia{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:12px 5px;
+    border-radius:10px;
+    background:#F8F8FA;
+}
+
+.dia span{
+    color:#777;
+    font-size:12px;
+    font-weight:600;
+}
+
+.dia strong{
+    color:#8B1E3F;
+    font-size:20px;
+    margin-top:5px;
+}
+
+/* ==================================================
+   Cabeçalho da Agenda por Profissionais
+================================================== */
+
+.cabecalho-agenda{
+    display:grid;
+    grid-template-columns:70px repeat(4,1fr);
+    align-items:center;
+    background:#FFFFFF;
+    border-bottom:1px solid #ECECEC;
+    padding:18px 0;
+    text-align:center;
+}
+
+#cabecalhoProfissionais {
+    display: contents;
+}
+
+.coluna-hora,
+.profissional{
+    padding:16px 8px;
+    text-align:center;
+}
+
+.coluna-hora{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size: 15px;
+    font-weight:700;
+    color:#555;
+}
+
+.profissional{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
+
+
+.profissional strong{
+    font-size:15px;
+    font-weight: 600;
+    color:#333;
+}
+
+.cor-profissional{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+}
+
+/* ==========================================
+   Cores das Profissionais
+========================================== */
+
+.verde{
+    background:#DFF5E3;
+}
+
+.amarelo{
+    background:#FFF7CC;
+}
+
+.azul{
+    background:#DDEEFF;
+}
+
+.rosa{
+    background:#F9DCE8;
+}
+
+/* ==========================================
+   Barra da Data
+========================================== */
+
+.barra-data{
+    display:grid;
+    grid-template-columns:60px 1fr 90px 60px;
+    align-items:center;
+    gap:20px;
+    padding:24px;
+    background:#FFFFFF;
+    border-bottom:1px solid #ECECEC;
+}
+
+.data-atual{
+    text-align:center;
+}
+
+.data-atual h2{
+    font-size:34px;
+    font-weight:700;
+    color:#2D2D2D;
+    margin:0;
+}
+
+.data-atual span{
+    display:block;
+    margin-top:8px;
+    font-size:16px;
+    color:#777;
+}
+
+.btn-hoje{
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    padding:10px 18px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.btn-data{
+    background:#6D2945;
+    color:white;
+}
+
+.btn-data{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:10px;
+    background:#FFFFFF;
+    border:1px solid #ECECEC;
+    cursor:pointer;
+    transition:.25s;
+    font-size:18px;
+}
+
+.btn-data:hover{
+    transform:scale(1.05);
+}
+
+.btn-hoje{
+    padding:10px 18px;
+    border:none;
+    border-radius:10px;
+    background:#E8D7DD;
+    color:#6D384A;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* ==================================================
+   Grade Principal da Agenda
+================================================== */
+
+.grade-agenda{
+    border:1px solid #ECECEC;
+    border-top:none;
+    border-radius:0 0 12px 12px;
+    overflow:hidden;
+}
+
+.hora{
+    padding:6px 10px;
+    font-weight:600;
+    font-size: 12px;
+    color:#666;
+    border-bottom:1px solid #F2F2F2;
+    background:#FAFAFA;
+}
+
+.celula{
+    position: relative;
+    min-height:45px;
+    border-right:1px solid #ECECEC;
+    border-bottom:1px solid #ECECEC;
+    background:#FFFFFF;
+    position:relative;
+}
+
+.celula:hover{
+    background:#F9F6F8;
+}
+/* ==========================================
+   Linha da Agenda
+========================================== */
+
+.linha-agenda{
+    display:grid;
+    grid-template-columns:70px repeat(4,1fr);
+}
+
+/* ==================================================
+   Cartão de Agendamento
+================================================== */
+
+.agendamento{
+    background:#FFFFFF;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    z-index: 10;
+    border-left:5px solid #4CAF50;
+    border-radius:12px;
+    padding:12px;
+    box-sizing:border-box;
+    overflow:hidden;
+    margin:6px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    cursor:pointer;
+    transition:all .25s ease;
+}
+
+.agendamento[data-profissional="fran"]{
+    background:#DFF5E3;
+}
+
+.agendamento:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+
+.agendamento .cliente{
+    font-size:14px;
+    font-weight:700;
+    color:#333;
+}
+
+.agendamento .servico{
+    font-size:13px;
+    color:#666;
+    margin:6px 0;
+}
+
+.agendamento .horario{
+    font-size:12px;
+    color:#888;
+}
+
+/* ==================================================
+   Painel Inteligente
+================================================== */
+
+.agenda-lateral h3{
+    font-size:16px;
+    color:#6D2945;
+    margin-bottom:15px;
+}
+
+.card-resumo{
+    background:#F8F8F8;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:20px;
+    border:1px solid #ECECEC;
+}
+
+.card-resumo p{
+    margin:8px 0;
+    color:#555;
+    font-size:12px;
+}
+
+/* ==================================================
+   MODAL
+================================================== */
+
+.modal-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.modal{
+
+    width:650px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background:#FFFFFF;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+    animation:modalEntrada .25s ease;
+}
+
+.modal h2{
+    margin-bottom:25px;
+    color:#6D2945;
+}
+
+.modal input,
+.modal select{
+
+    width:100%;
+    box-sizing: border-box;
+    padding:12px 15px;
+    margin-bottom:15px;
+    border:1px solid #DDD;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+    transition:.2s;
+}
+
+.modal input:focus,
+.modal select:focus{
+
+    border-color:#6D2945;
+
+}
+
+.modal-botoes{
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    margin-top:20px;
+}
+
+.btn-cancelar{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    background:#E5E5E5;
+    cursor:pointer;
+}
+
+.btn-salvar{
+    padding:10px 22px;
+    border:none;
+    border-radius:10px;
+    background:#6D2945;
+    color:#FFF;
+    cursor:pointer;
+}
+
+.btn-salvar:hover{
+    background:#5A2139;
+
+}
+
+@keyframes modalEntrada{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   Campos lado a lado
+========================================== */
+
+.linha-modal{
+
+    display:flex;
+    gap:15px;
+    margin-bottom:15px;
+
+}
+
+.campo{
+
+    flex:1;
+    display:flex;
+    flex-direction:column;
+
+}
+
+.modal label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#555;
+
+    margin-bottom:6px;
+
+}
+
+.modal textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #DDD;
+
+    border-radius:10px;
+
+    resize:none;
+
+    font-size:14px;
+
+    margin-top:8px;
+
+}
+.btn-excluir{
+    background:#e53935;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:10px 18px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.2s;
+}
+
+.btn-excluir:hover{
+    background:#c62828;
+}
+
+.navegacao-agenda{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.navegacao-agenda button{
+    padding:8px 16px;
+    border:none;
+    border-radius:8px;
+    background:#8e4b87;
+    color:#fff;
+    cursor:pointer;
+    font-weight:600;
+    transition:.2s;
+}
+
+.navegacao-agenda button:hover{
+    background:#6f3769;
+}
+
+#tituloDataAgenda{
+    min-width:220px;
+    text-align:center;
+    margin:0;
+}
+
+/* AJUSTE DOS DADOS DENTRO DO CARTÃO */
+.agendamento .cliente,
+.agendamento .servico,
+.agendamento .horario {
+    position: static !important;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 6px 0;
+    padding: 0;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.agendamento .cliente {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+}
+
+.agendamento .servico {
+    font-size: 13px;
+    color: #666;
+}
+
+.agendamento .horario {
+    font-size: 12px;
+    color: #888;
+}
+
+/* CORREÇÃO DEFINITIVA DO CONTEÚDO DO AGENDAMENTO */
+
+.agendamento {
+    position: absolute !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+.agendamento .cliente,
+.agendamento .servico,
+.agendamento .horario {
+    position: static !important;
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    white-space: normal !important;
+    overflow: visible !important;
+}
+
+.agendamento .cliente {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #333 !important;
+    margin-bottom: 5px !important;
+}
+
+.agendamento .servico {
+    font-size: 13px !important;
+    color: #666 !important;
+    margin-bottom: 5px !important;
+}
+
+.agendamento .horario {
+    font-size: 12px !important;
+    color: #888 !important;
+}
+/* =========================================
+   Legenda dos estados dos agendamentos
+========================================= */
+
+.card-legenda {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-top: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    font-size: 12px;
+}
+
+.item-legenda {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.item-legenda:last-child {
+    margin-bottom: 0;
+}
+
+.legenda-cor {
+    width: 9px;
+    height: 9px;
+    min-width: 9px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.legenda-cor.agendado {
+    background: #9BE7B0;
+}
+
+.legenda-cor.confirmado {
+    background: #4CAF50;
+}
+
+.legenda-cor.atendimento {
+    background: #FF9800;
+}
+
+.legenda-cor.concluido {
+    background: #2196F3;
+}
+
+.legenda-cor.cancelado {
+    background: #F44336;
+}
+
+.legenda-cor.nao-compareceu {
+    background: #757575;
+}
+
+/* ==============================
+   MENU LATERAL - PADRÃO EBS
+================================ */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 11px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 400;
+    background: transparent;
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.menu a.ativo {
+    background: transparent;
+    font-weight: 400;
+    box-shadow: none;
+}
+
+.menu a.ativo:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
