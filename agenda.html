@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+
+    <!-- ==============================================
+         Configurações da Página
+    =============================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agenda - EBS</title>
+
+    <link rel="stylesheet" href="../css/agenda.css">
+
+</head>
+
+<body>
+
+    <!-- ==============================================
+         Estrutura Principal
+    =============================================== -->
+
+    <div class="dashboard">
+
+        <!-- ==============================================
+             Menu Lateral
+        =============================================== -->
+
+        <aside class="sidebar">
+
+            <img src="../img/logo-ebs.jpeg" class="logo-menu" alt="Logo EBS">
+
+            <h2 class="titulo-menu">
+                EBS - Eliane Beauty Systems
+            </h2>
+
+            <hr>
+<div class="menu">
+<a href="dashboard.html">🏠 Dashboard</a>
+
+<a href="agenda.html" class="ativo">📅 Agenda</a>
+
+<a href="clientes.html">👥 Clientes</a>
+
+<a href="servicos.html">💅 Serviços</a>
+
+<a href="funcionarios.html">👩 Funcionários</a>
+
+<a href="financeiro.html">💰 Financeiro</a>
+
+<a href="estoque.html">📦 Estoque</a>
+
+<a href="relatorios.html">📊 Relatórios</a>
+
+<a href="configuracoes.html">⚙️ Configurações</a>
+</div>
+        </aside>
+
+        <!-- ==============================================
+             Conteúdo Principal
+        =============================================== -->
+
+        <main class="content">
+
+            <!-- ==============================================
+         Cabeçalho da Agenda
+    =============================================== -->
+
+            <div class="header-agenda">
+
+                <div>
+
+                    <h1>Agenda</h1>
+
+                    <p class="subtitulo">
+                        Organize os seus agendamentos.
+                    </p>
+
+                </div>
+
+                <button class="btn-novo" id="btnNovoAgendamento">
+                    + Novo Agendamento
+                </button>
+
+            </div>
+
+            <!-- ==============================================
+     Corpo da Agenda
+=============================================== -->
+
+            <div class="agenda-layout">
+
+                <!-- Agenda Semanal -->
+                <section class="agenda-principal">
+
+                    <!-- Cabeçalho de navegação da agenda -->
+                    <!-- ==============================================
+     Barra de Navegação da Agenda
+============================================== -->
+
+                    <div class="barra-data">
+
+                        <button class="btn-data" id="btnAnterior">
+                        ◀️
+                        </button>
+
+                        <div class="data-atual">
+
+                            <h2 id="diaSemana">Segunda-feira</h2>
+
+                            <span id="dataCompleta">20 Julho 2026</span>
+
+                        </div>
+
+                        <button class="btn-hoje" id="btnHoje"> Hoje </button>
+
+                        <button class="btn-data" id="btnProximo">
+                        ▶️
+                        </button>
+
+                    </div>
+
+                    <!-- ===================================================
+     Cabeçalho da Agenda por Profissionais
+=================================================== -->
+
+                    <div class="cabecalho-agenda">
+
+                        <div class="coluna-hora">
+                            <strong>Hora</strong>
+                        </div>
+
+                       <div id="cabecalhoProfissionais"></div>
+
+                    </div>
+
+                    <!-- ===================================================
+     Grade Principal da Agenda
+=================================================== -->
+
+                    <div class="grade-agenda" id="gradeAgenda">
+                        <!-- GRADE GERADA PELO JAVASCRIPT -->
+                       
+
+
+                    </div>>
+
+
+                </section>
+
+                <!-- Painel Inteligente -->
+                <aside class="agenda-lateral">
+
+                    <h3>📋 Resumo do Dia</h3>
+
+                    <div class="card-resumo">
+
+                        <p><strong>Agendamentos:</strong> <span id="totalAgendamentos">0</span></p>
+
+                        <p><strong>Confirmados:</strong> <span id="totalConfirmados">0</span></p>
+
+                        <p><strong>Pendentes:</strong> <span id="totalPendentes">0</span></p>
+
+                        <p><strong>Em Atendimento:</strong> <span id="totalEmAtendimento">0</span></p>
+
+                        <p><strong>Concluídos:</strong> <span id="totalConcluidos">0</span></p>
+
+                        <p><strong>Cancelados:</strong> <span id="totalCancelados">0</span></p>
+
+                        <p><strong>Não Compareceu:</strong> <span id="totalNaoCompareceu">0</span></p>
+
+</div>
+
+<h3>⏰ Próximo Atendimento</h3>
+
+<div class="card-resumo" id="proximoAtendimento">
+
+    <p>Nenhum próximo atendimento.</p>
+
+    <hr style="margin: 12px 0; border: 0; border-top: 1px solid #eee;">
+
+    <strong style="display:block; margin-bottom:8px;">
+        Legenda
+    </strong>
+
+    <div style="font-size:12px; line-height:1.8;">
+
+        <div>
+            <span style="color:#9BE7B0;">●</span>
+            Agendado
+        </div>
+
+        <div>
+            <span style="color:#4CAF50;">●</span>
+            Confirmado
+        </div>
+
+        <div>
+            <span style="color:#FF9800;">●</span>
+            Em Atendimento
+        </div>
+
+        <div>
+            <span style="color:#2196F3;">●</span>
+            Concluído
+        </div>
+
+        <div>
+            <span style="color:#F44336;">●</span>
+            Cancelado
+        </div>
+
+        <div>
+            <span style="color:#757575;">●</span>
+            Não Compareceu
+        </div>
+
+    </div>
+
+</div>
+
+<h3 class="titulo-legenda">🎨 Legenda</h3>
+
+<div class="card-legenda">
+
+    <div class="item-legenda">
+        <span class="legenda-cor agendado"></span>
+        <span>Agendado</span>
+    </div>
+
+    <div class="item-legenda">
+        <span class="legenda-cor confirmado"></span>
+        <span>Confirmado</span>
+    </div>
+
+    <div class="item-legenda">
+        <span class="legenda-cor atendimento"></span>
+        <span>Em Atendimento</span>
+    </div>
+
+    <div class="item-legenda">
+        <span class="legenda-cor concluido"></span>
+        <span>Concluído</span>
+    </div>
+
+    <div class="item-legenda">
+        <span class="legenda-cor cancelado"></span>
+        <span>Cancelado</span>
+    </div>
+
+    <div class="item-legenda">
+        <span class="legenda-cor nao-compareceu"></span>
+        <span>Não Compareceu</span>
+    </div>
+
+</div>
+
+                </aside>
+
+            </div>
+
+        </main>
+
+    </div>
+modal-f
+    <div class="modal-overlay" id="modalAgendamento">
+        <div class="modal">
+
+            <h2>Novo Agendamento</h2>
+
+            <label for="cliente">Cliente</label>
+            <input id="cliente" type="text" placeholder="Pesquisar cliente">
+             <div id="sugestoesClientes" class="sugestoes-clientes"></div>
+
+            <label for="profissional">Profissional</label>
+            <select id="profissional">
+               
+            </select>
+
+            <label for="servico">Serviço</label>
+            <select id="servico">
+                
+            </select>
+
+            <div class="linha-modal">
+
+                <div class="campo">
+                    <label for="data">Data</label>
+                    <input id="data" type="date">
+                </div>
+
+                <div class="campo">
+                    <label for="hora">Hora</label>
+                    <input id="hora" type="time">
+                </div>
+
+            </div>
+
+            <div class="linha-modal">
+
+                <div class="campo">
+                    <label for="duracao">Duração</label>
+                    <select id="duracao">
+                        <option value="">Selecione...</option>
+                        <option value="30">30 minutos</option>
+                        <option value="45">45 minutos</option>
+                        <option value="60">1 hora</option>
+                        <option value="75">1h15</option>
+                        <option value="90">1h30</option>
+                        <option value="105">1h45</option>
+                        <option value="120">2 horas</option>
+                        <option value="150">2h30</option>
+                        <option value="180">3 horas</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="valor">Valor</label>
+                    <input
+                        id="valor"
+                        type="text"
+                         placeholder="Ex.: 65,00"
+                        >
+                </div>
+
+            </div>
+
+            <label for="estado">Estado</label>
+
+            <select id="estado">
+                <option>Agendado</option>
+                <option>Confirmado</option>
+                <option>Em Atendimento</option>
+                <option>Concluído</option>
+                <option>Cancelado</option>
+                <option>Não Compareceu</option>
+            </select>
+
+            <label for="observacoes">Observações</label>
+
+            <textarea id="observacoes" rows="4" placeholder="Informações importantes sobre o atendimento"></textarea>
+
+            <div class="modal-botoes">
+
+    <button class="btn-cancelar">
+        Cancelar
+    </button>
+
+    <button id="btnExcluirAgendamento" class="btn-excluir">
+        Excluir
+    </button>
+
+    <button id="btnSalvarAgendamento" class="btn-salvar">
+        Salvar
+    </button>
+
+            </div>
+
+            </div> <!-- fim do modal -->
+        </div> <!-- fim do modal-overlay -->
+
+
+        <script src="agenda.js"></script>
+
+</body>
+
+</html>
