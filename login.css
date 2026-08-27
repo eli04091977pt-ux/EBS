@@ -1,0 +1,107 @@
+/* ===================================================
+   EBS - Eliane Beauty Systems
+   CSS Oficial v1.0
+=================================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ===================================================
+   Body de Login
+=================================================== */
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(135deg, #5d0f2e, #8b1e3f, #d7a2b4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+/* ===================================================
+   Card de Login
+=================================================== */
+
+.login-card{
+    width:430px;
+    background:white;
+    padding:45px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+/* ===================================================
+   Títulos
+=================================================== */
+
+h1{
+    color:#8B1E3F;
+    font-size:22px;
+    font-weight:700;
+    margin:10px 0;
+    line-height:1.3;
+}
+p{
+    color:#777;
+    font-size:16px;
+    margin-bottom:25px;
+}
+
+/* ===================================================
+   Campos
+=================================================== */
+
+input{
+    width:100%;
+    padding:15px;
+    margin-bottom:18px;
+    border:1px solid #DDD;
+    border-radius:12px;
+    font-size:16px;
+    transition:.3s;
+}
+input:focus{
+    border-color:#8B1E3F;
+    box-shadow:0 0 8px rgba(139,30,63,0.20);
+}
+/* ===================================================
+   Botão Oficial
+=================================================== */
+
+button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:#8B1E3F;
+    color:#FFF;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.30s;
+    box-shadow:0 8px 18px rgba(139,30,63,.25);
+}
+
+button:hover{
+    background:#6F1732;
+    transform:translateY(-3px);
+    box-shadow:0 14px 28px rgba(139,30,63,.35);
+}
+.logo{
+    width:170px;
+    height:170px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 20px auto;
+}
+@media (max-width: 480px){
+    h1{
+        font-size: 22px;
+    }
+}
