@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Serviços - EBS</title>
+
+    <link rel="stylesheet" href="../css/servicos.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =========================================
+         MENU LATERAL EBS
+    ========================================== -->
+
+    <aside class="sidebar">
+
+        <img
+            src="../img/logo-ebs.jpeg"
+            alt="EBS"
+            class="logo-menu"
+        >
+
+        <div class="titulo-menu">
+    EBS - Eliane Beauty Systems</div>
+
+        <hr>
+
+        <nav class="menu">
+
+            <a href="dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="agenda.html">
+                📅 Agenda
+            </a>
+
+            <a href="clientes.html">
+                👥 Clientes
+            </a>
+
+            <a href="servicos.html" class="ativo">
+                💅 Serviços
+            </a>
+
+            <a href="funcionarios.html">
+                👩‍💼 Funcionários
+            </a>
+
+            <a href="financeiro.html">
+                💰 Financeiro
+            </a>
+
+            <a href="estoque.html">
+                📦 Estoque
+            </a>
+
+            <a href="relatorios.html">
+                📊 Relatórios
+            </a>
+
+            <a href="configuracoes.html">
+                ⚙️ Configurações
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
+    <main class="content">
+
+        <header class="header-servicos">
+
+            <div>
+                <h1>Serviços</h1>
+
+                <p>
+                    Cadastre e organize os procedimentos oferecidos pelo estúdio.
+                </p>
+            </div>
+
+            <button
+                class="btn-novo"
+                id="btnNovoServico"
+            >
+                + Novo Serviço
+            </button>
+
+        </header>
+
+
+        <!-- =====================================
+             INDICADORES
+        ====================================== -->
+
+        <section class="indicadores">
+
+            <div class="card-indicador">
+
+                <div class="icone">
+                    💅
+                </div>
+
+                <div>
+                    <small>Total de Serviços</small>
+                    <strong id="totalServicos">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="card-indicador">
+
+                <div class="icone">
+                    ✓
+                </div>
+
+                <div>
+                    <small>Serviços Ativos</small>
+                    <strong id="servicosAtivos">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="card-indicador">
+
+                <div class="icone">
+                    ⏸️
+                </div>
+
+                <div>
+                    <small>Serviços Inativos</small>
+                    <strong id="servicosInativos">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             FILTROS
+        ====================================== -->
+
+        <section class="filtros">
+
+            <div class="campo-pesquisa">
+
+                <span>🔎</span>
+
+                <input
+                    type="text"
+                    id="pesquisaServico"
+                    placeholder="Pesquisar serviço..."
+                >
+
+            </div>
+
+
+            <select id="filtroCategoria">
+
+                <option value="">
+                    Todas as categorias
+                </option>
+
+            </select>
+
+
+            <select id="filtroStatus">
+
+                <option value="">
+                    Todos os status
+                </option>
+
+                <option value="ativo">
+                    Ativos
+                </option>
+
+                <option value="inativo">
+                    Inativos
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- =====================================
+             LISTA
+        ====================================== -->
+
+        <section class="servicos-area">
+
+            <div class="titulo-lista">
+
+                <h2>
+                    Lista de Serviços
+                </h2>
+
+                <span id="contadorServicos">
+                    0 serviços
+                </span>
+
+            </div>
+
+
+            <div
+                class="lista-servicos"
+                id="listaServicos"
+            >
+            </div>
+
+
+            <div
+                class="vazio"
+                id="estadoVazio"
+            >
+
+                <div class="vazio-icone">
+                    💅
+                </div>
+
+                <strong>
+                    Nenhum serviço cadastrado
+                </strong>
+
+                <span>
+                    Clique em "+ Novo Serviço" para começar.
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     MODAL
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="modalServico"
+>
+
+    <div class="modal">
+
+        <div class="modal-cabecalho">
+
+            <div>
+
+                <h2 id="tituloModal">
+                    Novo Serviço
+                </h2>
+
+                <p>
+                    Cadastre os dados do procedimento.
+                </p>
+
+            </div>
+
+            <button
+                class="btn-fechar"
+                id="btnFecharModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="formServico">
+
+            <div class="form-grid">
+
+                <div class="campo campo-grande">
+
+                    <label for="nomeServico">
+                        Nome do serviço *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeServico"
+                        required
+                        placeholder="Ex.: Extensão de cílios"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="categoriaServico">
+                        Categoria
+                    </label>
+
+                    <input
+                        type="text"
+                        id="categoriaServico"
+                        placeholder="Ex.: Cílios"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="duracaoServico">
+                        Duração estimada *
+                    </label>
+
+                    <div class="campo-duracao">
+
+                        <input
+                            type="number"
+                            id="duracaoServico"
+                            min="1"
+                            required
+                            placeholder="Ex.: 120"
+                        >
+
+                        <span>
+                            minutos
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="valorServico">
+                        Valor padrão (€) *
+                    </label>
+
+                    <input
+                        type="number"
+                        id="valorServico"
+                        min="0"
+                        step="0.01"
+                        required
+                        placeholder="0,00"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="statusServico">
+                        Status
+                    </label>
+
+                    <select id="statusServico">
+
+                        <option value="ativo">
+                            Ativo
+                        </option>
+
+                        <option value="inativo">
+                            Inativo
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo campo-grande">
+
+                    <label for="descricaoServico">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="descricaoServico"
+                        rows="4"
+                        placeholder="Descreva o procedimento..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROFISSIONAIS -->
+
+            <div class="profissionais-box">
+
+                <label>
+                    Profissionais habilitadas
+                </label>
+
+                <div
+                    id="listaProfissionais"
+                    class="lista-profissionais"
+                >
+                </div>
+
+                <small>
+                    Selecione as profissionais que podem realizar este serviço.
+                </small>
+
+            </div>
+
+
+            <div class="modal-botoes">
+
+                <button
+                    type="button"
+                    class="btn-cancelar"
+                    id="btnCancelar"
+                >
+                    Cancelar
+                </button>
+
+               <button
+    type="submit"
+    class="btn-salvar"
+    
+>
+    Salvar Serviço
+</button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="./servicos.js"></script>
+
+
+</body>
+
+</html>
