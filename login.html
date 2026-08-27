@@ -20,7 +20,7 @@
 
         <p>Faça login para acessar a plataforma</p>
 
-        <form>
+        <form onsubmit="entrar(event)">
 
             <input type="email" placeholder="E-mail">
 
@@ -31,7 +31,12 @@
         </form>
 
     </div>
-
+<script>
+function entrar(event) {
+    event.preventDefault();
+    window.location.href = "dashboard.html";
+}
+</script>
 </body>
 
 </html>
