@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clientes - EBS</title>
+
+    <link rel="stylesheet" href="../css/clientes.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =========================================
+         MENU LATERAL
+    ========================================== -->
+
+    <aside class="sidebar">
+
+        <img
+            src="../img/logo-ebs.jpeg"
+            class="logo-menu"
+            alt="Logo EBS"
+        >
+
+        <div class="titulo-menu">
+    EBS - Eliane Beauty Systems
+</div>
+
+        <hr>
+
+        <nav class="menu">
+
+            <a href="dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="agenda.html">
+                📅 Agenda
+            </a>
+
+            <a href="clientes.html" class="ativo">
+                👥 Clientes
+            </a>
+
+            <a href="servicos.html">
+                💅 Serviços
+            </a>
+
+            <a href="funcionarios.html">
+                👩 Funcionários
+            </a>
+
+            <a href="financeiro.html">
+                💰 Financeiro
+            </a>
+
+            <a href="estoque.html">
+                📦 Estoque
+            </a>
+
+            <a href="relatorios.html">
+                📊 Relatórios
+            </a>
+
+            <a href="configuracoes.html">
+                ⚙️ Configurações
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =========================================
+         CONTEÚDO PRINCIPAL
+    ========================================== -->
+
+    <main class="content">
+
+        <!-- CABEÇALHO -->
+
+        <header class="header-clientes">
+
+            <div>
+
+                <h1>Clientes</h1>
+
+                <p>
+                    Gerencie os seus clientes e acompanhe o relacionamento.
+                </p>
+
+            </div>
+
+            <button
+                class="btn-novo"
+                id="btnNovoCliente"
+            >
+                + Novo Cliente
+            </button>
+
+        </header>
+
+
+        <!-- =========================================
+             INDICADORES
+        ========================================== -->
+
+        <section class="indicadores">
+
+            <div class="card-indicador">
+
+                <span class="icone">👥</span>
+
+                <div>
+
+                    <small>Total de Clientes</small>
+
+                    <strong id="totalClientes">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-indicador">
+
+                <span class="icone">✨</span>
+
+                <div>
+
+                    <small>Novos Clientes</small>
+
+                    <strong id="novosClientes">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-indicador">
+
+                <span class="icone">🎂</span>
+
+                <div>
+
+                    <small>Aniversariantes do Mês</small>
+
+                    <strong id="aniversariantes">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-indicador">
+
+                <span class="icone">⭐</span>
+
+                <div>
+
+                    <small>Clientes Fidelizados</small>
+
+                    <strong id="clientesFidelizados">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             PESQUISA E FILTRO
+        ========================================== -->
+
+        <section class="filtros">
+
+            <div class="campo-pesquisa">
+
+                <span>🔎</span>
+
+                <input
+                    type="text"
+                    id="pesquisaCliente"
+                    placeholder="Pesquisar por nome, telefone ou e-mail..."
+                >
+
+            </div>
+
+
+            <select id="filtroStatus">
+
+                <option value="todos">
+                    Todos os clientes
+                </option>
+
+                <option value="Ativo">
+                    Ativos
+                </option>
+
+                <option value="Inativo">
+                    Inativos
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- =========================================
+             LISTA DE CLIENTES
+        ========================================== -->
+
+        <section class="clientes-area">
+
+            <div class="titulo-lista">
+
+                <h2>
+                    Lista de Clientes
+                </h2>
+
+                <span id="contadorResultados">
+                    0 clientes
+                </span>
+
+            </div>
+
+
+            <div
+                class="lista-clientes"
+                id="listaClientes"
+            >
+
+                <!-- Clientes inseridos pelo JavaScript -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     MODAL NOVO / EDITAR CLIENTE
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="modalCliente"
+>
+
+    <div class="modal">
+
+        <div class="modal-cabecalho">
+
+            <div>
+
+                <h2 id="tituloModal">
+                    Novo Cliente
+                </h2>
+
+                <p>
+                    Preencha os dados do cliente.
+                </p>
+
+            </div>
+
+            <button
+                class="btn-fechar"
+                id="btnFecharModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="campo campo-grande">
+
+                <label for="nomeCliente">
+                    Nome completo *
+                </label>
+
+                <input
+                    type="text"
+                    id="nomeCliente"
+                    placeholder="Nome completo"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="telefoneCliente">
+                    Telefone
+                </label>
+
+                <input
+                    type="tel"
+                    id="telefoneCliente"
+                    placeholder="+351 9XX XXX XXX"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="whatsappCliente">
+                    WhatsApp
+                </label>
+
+                <input
+                    type="tel"
+                    id="whatsappCliente"
+                    placeholder="+351 9XX XXX XXX"
+                >
+
+            </div>
+
+
+            <div class="campo campo-grande">
+
+                <label for="emailCliente">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="emailCliente"
+                    placeholder="cliente@email.com"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="nascimentoCliente">
+                    Data de nascimento
+                </label>
+
+                <input
+                    type="date"
+                    id="nascimentoCliente"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="instagramCliente">
+                    Instagram
+                </label>
+
+                <input
+                    type="text"
+                    id="instagramCliente"
+                    placeholder="@cliente"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label for="observacoesCliente">
+                Observações
+            </label>
+
+            <textarea
+                id="observacoesCliente"
+                rows="4"
+                placeholder="Informações importantes sobre a cliente..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label for="statusCliente">
+                Status
+            </label>
+
+            <select id="statusCliente">
+
+                <option value="Ativo">
+                    Ativo
+                </option>
+
+                <option value="Inativo">
+                    Inativo
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="modal-botoes">
+
+            <button
+                class="btn-cancelar"
+                id="btnCancelarCliente"
+            >
+                Cancelar
+            </button>
+
+            <button
+                class="btn-salvar"
+                id="btnSalvarCliente"
+            >
+                Salvar Cliente
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     PAINEL DE DETALHES
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="modalDetalhes"
+>
+
+    <div class="modal detalhes-modal">
+
+        <div class="modal-cabecalho">
+
+            <div>
+
+                <h2 id="detalhesNome">
+                    Cliente
+                </h2>
+
+                <p id="detalhesStatus">
+                    Ativo
+                </p>
+
+            </div>
+
+            <button
+                class="btn-fechar"
+                id="btnFecharDetalhes"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="detalhes-conteudo">
+
+            <div class="detalhes-bloco">
+
+                <h3>👤 Dados pessoais</h3>
+
+                <p>
+                    <strong>Telefone:</strong>
+                    <span id="detalhesTelefone">—</span>
+                </p>
+
+                <p>
+                    <strong>WhatsApp:</strong>
+                    <span id="detalhesWhatsapp">—</span>
+                </p>
+
+                <p>
+                    <strong>E-mail:</strong>
+                    <span id="detalhesEmail">—</span>
+                </p>
+
+                <p>
+                    <strong>Nascimento:</strong>
+                    <span id="detalhesNascimento">—</span>
+                </p>
+
+                <p>
+                    <strong>Instagram:</strong>
+                    <span id="detalhesInstagram">—</span>
+                </p>
+
+            </div>
+
+
+            <div class="detalhes-bloco">
+
+                <h3>📋 Histórico</h3>
+
+                <p>
+                    <strong>Último atendimento:</strong>
+                    <span id="detalhesUltimoAtendimento">—</span>
+                </p>
+
+                <p>
+                    <strong>Atendimentos:</strong>
+                    <span id="detalhesQuantidadeAtendimentos">0</span>
+                </p>
+
+            </div>
+
+
+            <div class="detalhes-bloco">
+
+                <h3>📝 Observações</h3>
+
+                <p id="detalhesObservacoes">
+                    Nenhuma observação registrada.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-botoes">
+
+            <button
+                class="btn-cancelar"
+                id="btnFecharDetalhes2"
+            >
+                Fechar
+            </button>
+
+            <button
+                class="btn-editar"
+                id="btnEditarCliente"
+            >
+                Editar Cliente
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="clientes.js"></script>
+
+</body>
+
+</html>
