@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Estoque - EBS</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/estoque.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+
+    <!-- =====================================================
+         MENU PADRÃO EBS
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <img
+            src="../img/logo-ebs.jpeg"
+            alt="EBS"
+            class="logo-menu"
+        >
+
+        <div class="titulo-menu">
+            EBS - Eliane Beauty Systems
+        </div>
+
+        <hr>
+
+        <nav class="menu">
+
+            <a href="dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="agenda.html">
+                📅 Agenda
+            </a>
+
+            <a href="clientes.html">
+                👥 Clientes
+            </a>
+
+            <a href="servicos.html">
+                💅 Serviços
+            </a>
+
+            <a href="funcionarios.html">
+                👩‍💼 Funcionários
+            </a>
+
+            <a href="financeiro.html">
+                💰 Financeiro
+            </a>
+
+            <a
+                href="estoque.html"
+                class="ativo"
+            >
+                📦 Estoque
+            </a>
+
+            <a href="relatorios.html">
+                📊 Relatórios
+            </a>
+
+            <a href="configuracoes.html">
+                ⚙️ Configurações
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTEÚDO
+    ====================================================== -->
+
+    <main class="content">
+
+
+        <!-- CABEÇALHO -->
+
+        <header class="page-header">
+
+            <div>
+
+                <h1>
+                    Estoque
+                </h1>
+
+                <p>
+                    Controle produtos, materiais,
+                    entradas, consumos e fornecedores.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                id="btnAtualizar"
+            >
+                ↻ Atualizar
+            </button>
+
+        </header>
+
+
+
+        <!-- =================================================
+             RESUMO
+        ================================================== -->
+
+        <section class="resumo-grid">
+
+
+            <div class="resumo-card">
+
+                <div class="resumo-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <small>
+                        Produtos ativos
+                    </small>
+
+                    <strong id="totalProdutos">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="resumo-card">
+
+                <div class="resumo-icon">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <small>
+                        Estoque baixo
+                    </small>
+
+                    <strong id="totalBaixo">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="resumo-card">
+
+                <div class="resumo-icon">
+                    🚨
+                </div>
+
+                <div>
+
+                    <small>
+                        Estoque crítico
+                    </small>
+
+                    <strong id="totalCritico">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="resumo-card">
+
+                <div class="resumo-icon">
+                    💶
+                </div>
+
+                <div>
+
+                    <small>
+                        Valor em estoque
+                    </small>
+
+                    <strong id="valorEstoque">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABAS
+        ================================================== -->
+
+        <div
+            class="abas-estoque"
+            role="tablist"
+        >
+
+            <button
+                type="button"
+                class="aba-estoque ativo"
+                data-aba="produtos"
+            >
+                📦 Produtos
+            </button>
+
+
+            <button
+                type="button"
+                class="aba-estoque"
+                data-aba="movimentacoes"
+            >
+                🔄 Movimentações
+            </button>
+
+
+            <button
+                type="button"
+                class="aba-estoque"
+                data-aba="fornecedores"
+            >
+                🏢 Fornecedores
+            </button>
+
+
+            <button
+                type="button"
+                class="aba-estoque"
+                data-aba="alertas"
+            >
+                🚨 Alertas
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ABA PRODUTOS
+        ================================================== -->
+
+        <section
+            class="aba-conteudo ativa"
+            id="abaProdutos"
+        >
+
+            <div class="section-head">
+
+                <div>
+
+                    <h2>
+                        Produtos
+                    </h2>
+
+                    <p>
+                        Cadastre e acompanhe os materiais
+                        utilizados pela empresa.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="btnNovoProduto"
+                >
+                    + Novo produto
+                </button>
+
+            </div>
+
+
+
+            <div class="filtros">
+
+                <input
+                    id="pesquisaProduto"
+                    type="search"
+                    placeholder="🔎 Pesquisar produto..."
+                >
+
+
+                <select
+                    id="filtroCategoriaProduto"
+                >
+
+                    <option value="">
+                        Todas as categorias
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="filtroStatusProduto"
+                >
+
+                    <option value="">
+                        Todos
+                    </option>
+
+                    <option value="ativo">
+                        Ativos
+                    </option>
+
+                    <option value="inativo">
+                        Inativos
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div
+                class="lista-card"
+                id="listaProdutos"
+            ></div>
+
+
+            <div
+                class="estado-vazio"
+                id="estadoVazioProdutos"
+            >
+
+                <div>
+                    📦
+                </div>
+
+                <strong>
+                    Nenhum produto cadastrado
+                </strong>
+
+                <span>
+                    Comece cadastrando o primeiro produto.
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABA MOVIMENTAÇÕES
+        ================================================== -->
+
+        <section
+            class="aba-conteudo"
+            id="abaMovimentacoes"
+        >
+
+            <div class="section-head">
+
+                <div>
+
+                    <h2>
+                        Movimentações
+                    </h2>
+
+                    <p>
+                        Entradas, saídas, consumos e ajustes
+                        ficam registrados no histórico.
+                    </p>
+
+                </div>
+
+
+                <div class="acoes-head">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="btnNovaSaida"
+                    >
+                        − Registrar saída
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="btnNovaEntrada"
+                    >
+                        + Registrar entrada
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="filtros">
+
+                <input
+                    id="pesquisaMovimentacao"
+                    type="search"
+                    placeholder="🔎 Pesquisar produto, fornecedor ou atendimento..."
+                >
+
+
+                <select
+                    id="filtroTipoMovimentacao"
+                >
+
+                    <option value="">
+                        Todos os tipos
+                    </option>
+
+                    <option value="entrada">
+                        Entradas
+                    </option>
+
+                    <option value="saida">
+                        Saídas
+                    </option>
+
+                    <option value="consumo">
+                        Consumos
+                    </option>
+
+                    <option value="ajuste">
+                        Ajustes
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="filtroOrigemMovimentacao"
+                >
+
+                    <option value="">
+                        Todas as origens
+                    </option>
+
+                    <option value="Compra">
+                        Compra
+                    </option>
+
+                    <option value="Atendimento">
+                        Atendimento
+                    </option>
+
+                    <option value="Ajuste">
+                        Ajuste
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div
+                class="lista-card"
+                id="listaMovimentacoes"
+            ></div>
+
+
+            <div
+                class="estado-vazio"
+                id="estadoVazioMovimentacoes"
+            >
+
+                <div>
+                    🔄
+                </div>
+
+                <strong>
+                    Nenhuma movimentação encontrada
+                </strong>
+
+                <span>
+                    As entradas e saídas aparecerão aqui.
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABA FORNECEDORES
+        ================================================== -->
+
+        <section
+            class="aba-conteudo"
+            id="abaFornecedores"
+        >
+
+            <div class="section-head">
+
+                <div>
+
+                    <h2>
+                        Fornecedores
+                    </h2>
+
+                    <p>
+                        Cadastre fornecedores e acompanhe
+                        produtos e compras.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="btnNovoFornecedor"
+                >
+                    + Novo fornecedor
+                </button>
+
+            </div>
+
+
+
+            <div class="filtros">
+
+                <input
+                    id="pesquisaFornecedor"
+                    type="search"
+                    placeholder="🔎 Pesquisar fornecedor..."
+                >
+
+
+                <select
+                    id="filtroStatusFornecedor"
+                >
+
+                    <option value="">
+                        Todos
+                    </option>
+
+                    <option value="ativo">
+                        Ativos
+                    </option>
+
+                    <option value="inativo">
+                        Inativos
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div
+                class="lista-card"
+                id="listaFornecedores"
+            ></div>
+
+
+            <div
+                class="estado-vazio"
+                id="estadoVazioFornecedores"
+            >
+
+                <div>
+                    🏢
+                </div>
+
+                <strong>
+                    Nenhum fornecedor cadastrado
+                </strong>
+
+                <span>
+                    Cadastre seus fornecedores
+                    para registrar compras.
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABA ALERTAS
+        ================================================== -->
+
+        <section
+            class="aba-conteudo"
+            id="abaAlertas"
+        >
+
+            <div class="section-head">
+
+                <div>
+
+                    <h2>
+                        Alertas
+                    </h2>
+
+                    <p>
+                        Veja rapidamente o que precisa
+                        de reposição.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="alert-summary">
+
+                <div class="mini-card">
+
+                    <span>
+                        🚨 Crítico
+                    </span>
+
+                    <strong id="contadorAlertasCriticos">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <span>
+                        ⚠️ Baixo
+                    </span>
+
+                    <strong id="contadorAlertasBaixos">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <span>
+                        🟡 Próximo do mínimo
+                    </span>
+
+                    <strong id="contadorAlertasProximos">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="lista-card"
+                id="listaAlertas"
+            ></div>
+
+
+            <div
+                class="estado-vazio"
+                id="estadoVazioAlertas"
+            >
+
+                <div>
+                    ✅
+                </div>
+
+                <strong>
+                    Nenhum alerta de estoque
+                </strong>
+
+                <span>
+                    Os produtos estão acima
+                    dos limites configurados.
+                </span>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =======================================================
+     MODAL - PRODUTO
+======================================================== -->
+
+<div
+    class="modal"
+    id="modalProduto"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal-box modal-large"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="tituloModalProduto">
+                    Novo produto
+                </h3>
+
+                <p>
+                    Cadastre o produto e seus parâmetros
+                    de estoque.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                data-close="modalProduto"
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <form id="formProduto">
+
+            <input
+                type="hidden"
+                id="produtoId"
+            >
+
+
+            <div class="form-grid">
+
+
+                <label>
+
+                    Nome do produto *
+
+                    <input
+                        id="produtoNome"
+                        type="text"
+                        required
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Categoria
+
+                    <input
+                        id="produtoCategoria"
+                        type="text"
+                        placeholder="Ex.: Cílios, unhas, descartáveis..."
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Unidade de medida *
+
+                    <select
+                        id="produtoUnidade"
+                        required
+                    >
+
+                        <option value="un">
+                            Unidade
+                        </option>
+
+                        <option value="ml">
+                            ml
+                        </option>
+
+                        <option value="l">
+                            Litro
+                        </option>
+
+                        <option value="g">
+                            g
+                        </option>
+
+                        <option value="kg">
+                            kg
+                        </option>
+
+                        <option value="cx">
+                            Caixa
+                        </option>
+
+                        <option value="pct">
+                            Pacote
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+
+                <label>
+
+                    Quantidade atual *
+
+                    <input
+                        id="produtoQuantidade"
+                        type="number"
+                        min="0"
+                        step="0.001"
+                        value="0"
+                        required
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Estoque mínimo
+
+                    <input
+                        id="produtoMinimo"
+                        type="number"
+                        min="0"
+                        step="0.001"
+                        value="0"
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Custo médio (€)
+
+                    <input
+                        id="produtoCusto"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                    >
+
+                </label>
+
+
+            </div>
+
+
+
+            <label>
+
+                Fornecedores do produto
+
+                <select
+                    id="produtoFornecedores"
+                    multiple
+                    size="4"
+                ></select>
+
+                <small class="help">
+                    Pode selecionar mais de um fornecedor.
+                    O primeiro será considerado o principal.
+                </small>
+
+            </label>
+
+
+
+            <div class="subsection">
+
+                <div class="subsection-head">
+
+                    <div>
+
+                        <h4>
+                            Consumo por serviço
+                        </h4>
+
+                        <p>
+                            Defina quanto deste produto é
+                            utilizado em cada serviço.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-small"
+                        id="btnAdicionarConsumo"
+                    >
+                        + Adicionar serviço
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="listaConsumoServico"
+                ></div>
+
+
+                <div class="hint">
+                    Exemplo:
+                    Volume Russo → 1 unidade
+                    deste produto por atendimento.
+                </div>
+
+            </div>
+
+
+
+            <label class="check-line">
+
+                <input
+                    type="checkbox"
+                    id="produtoAtivo"
+                    checked
+                >
+
+                Produto ativo
+
+            </label>
+
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-close="modalProduto"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Salvar produto
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     MODAL - FORNECEDOR
+======================================================== -->
+
+<div
+    class="modal"
+    id="modalFornecedor"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal-box"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="tituloModalFornecedor">
+                    Novo fornecedor
+                </h3>
+
+                <p>
+                    Cadastro comercial do fornecedor.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                data-close="modalFornecedor"
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <form id="formFornecedor">
+
+            <input
+                type="hidden"
+                id="fornecedorId"
+            >
+
+
+            <div class="form-grid">
+
+
+                <label>
+
+                    Nome comercial *
+
+                    <input
+                        id="fornecedorNome"
+                        type="text"
+                        required
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Razão social
+
+                    <input
+                        id="fornecedorRazao"
+                        type="text"
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Contribuinte
+
+                    <input
+                        id="fornecedorDocumento"
+                        type="text"
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Telefone
+
+                    <input
+                        id="fornecedorTelefone"
+                        type="text"
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    WhatsApp
+
+                    <input
+                        id="fornecedorWhatsapp"
+                        type="text"
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    E-mail
+
+                    <input
+                        id="fornecedorEmail"
+                        type="email"
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Website
+
+                    <input
+                        id="fornecedorWebsite"
+                        type="url"
+                        placeholder="https://..."
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Contato principal
+
+                    <input
+                        id="fornecedorContato"
+                        type="text"
+                    >
+
+                </label>
+
+
+            </div>
+
+
+
+            <label>
+
+                Observações
+
+                <textarea
+                    id="fornecedorObservacoes"
+                    rows="3"
+                ></textarea>
+
+            </label>
+
+
+
+            <label class="check-line">
+
+                <input
+                    type="checkbox"
+                    id="fornecedorAtivo"
+                    checked
+                >
+
+                Fornecedor ativo
+
+            </label>
+
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-close="modalFornecedor"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Salvar fornecedor
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     MODAL - MOVIMENTAÇÃO
+======================================================== -->
+
+<div
+    class="modal"
+    id="modalMovimentacao"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal-box"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="tituloModalMovimentacao">
+                    Registrar movimentação
+                </h3>
+
+                <p>
+                    O histórico da movimentação
+                    será preservado.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                data-close="modalMovimentacao"
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <form id="formMovimentacao">
+
+            <input
+                type="hidden"
+                id="movimentacaoId"
+            >
+
+            <input
+                type="hidden"
+                id="movimentacaoTipo"
+            >
+
+
+            <div class="form-grid">
+
+
+                <label>
+
+                    Produto *
+
+                    <select
+                        id="movimentacaoProduto"
+                        required
+                    >
+
+                        <option value="">
+                            Selecione o produto
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+
+                <label>
+
+                    Quantidade *
+
+                    <input
+                        id="movimentacaoQuantidade"
+                        type="number"
+                        min="0.001"
+                        step="0.001"
+                        required
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Data *
+
+                    <input
+                        id="movimentacaoData"
+                        type="date"
+                        required
+                    >
+
+                </label>
+
+
+
+                <label>
+
+                    Origem *
+
+                    <select
+                        id="movimentacaoOrigem"
+                        required
+                    >
+
+                        <option value="Compra">
+                            Compra
+                        </option>
+
+                        <option value="Ajuste">
+                            Ajuste
+                        </option>
+
+                        <option value="Atendimento">
+                            Atendimento
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+            </div>
+
+
+
+            <div id="camposCompra">
+
+                <div class="form-grid">
+
+
+                    <label>
+
+                        Fornecedor
+
+                        <select
+                            id="movimentacaoFornecedor"
+                        >
+
+                            <option value="">
+                                Selecione o fornecedor
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+
+                    <label>
+
+                        Custo unitário (€)
+
+                        <input
+                            id="movimentacaoCusto"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            value="0"
+                        >
+
+                    </label>
+
+
+
+                    <label>
+
+                        Status financeiro
+
+                        <select
+                            id="movimentacaoStatusFinanceiro"
+                        >
+
+                            <option value="pendente">
+                                Pendente
+                            </option>
+
+                            <option value="paga">
+                                Paga
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+
+                    <label>
+
+                        Forma de pagamento
+
+                        <select
+                            id="movimentacaoFormaPagamento"
+                        >
+
+                            <option value="">
+                                Não informado
+                            </option>
+
+                            <option value="dinheiro">
+                                Dinheiro
+                            </option>
+
+                            <option value="cartao">
+                                Cartão
+                            </option>
+
+                            <option value="transferencia">
+                                Transferência
+                            </option>
+
+                            <option value="mbway">
+                                MB WAY
+                            </option>
+
+                            <option value="outro">
+                                Outro
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                </div>
+
+
+
+                <div class="purchase-total">
+
+                    Total da compra:
+
+                    <strong id="totalCompra">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <label>
+
+                Observação / motivo
+
+                <textarea
+                    id="movimentacaoObservacao"
+                    rows="3"
+                    placeholder="Ex.: reposição, perda, ajuste de inventário..."
+                ></textarea>
+
+            </label>
+
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-close="modalMovimentacao"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Registrar
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================== -->
+
+<script src="estoque.js"></script>
+
+</body>
+
+</html>
