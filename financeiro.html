@@ -1,0 +1,1455 @@
+<!-- =========================================================
+     EBS - ELIANE BEAUTY SYSTEMS
+     FINANCEIRO
+========================================================= -->
+
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Financeiro - EBS</title>
+
+    <link rel="stylesheet" href="../css/financeiro.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <img
+    src="../img/logo-ebs.jpeg"
+    alt="EBS"
+    class="logo-menu"
+>
+
+        <div class="titulo-menu">
+            EBS - Eliane Beauty Systems
+        </div>
+
+        <hr>
+
+        <nav class="menu">
+
+    <a href="dashboard.html">
+        🏠 Dashboard
+    </a>
+
+    <a href="agenda.html">
+        📅 Agenda
+    </a>
+
+    <a href="clientes.html">
+        👥 Clientes
+    </a>
+
+    <a href="servicos.html">
+        💅 Serviços
+    </a>
+
+    <a href="funcionarios.html">
+        👩‍💼 Funcionários
+    </a>
+
+    <a href="financeiro.html" class="ativo">
+        💰 Financeiro
+    </a>
+
+    <a href="estoque.html">
+        📦 Estoque
+    </a>
+
+    <a href="relatorios.html">
+        📊 Relatórios
+    </a>
+
+    <a href="configuracoes.html">
+        ⚙️ Configurações
+    </a>
+
+</nav>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="content">
+
+        <!-- =================================================
+             CABEÇALHO
+        ================================================== -->
+
+        <header class="header-financeiro">
+
+            <div>
+
+                <h1>
+                    Financeiro
+                </h1>
+
+                <p>
+                    Controle financeiro do seu negócio
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             RESUMO FINANCEIRO
+        ================================================== -->
+
+        <section class="resumo-financeiro">
+
+            <div class="card-resumo">
+
+                <div class="icone-resumo">
+                    💰
+                </div>
+
+                <div>
+
+                    <small>
+                        Receitas
+                    </small>
+
+                    <strong id="totalReceitas">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-resumo">
+
+                <div class="icone-resumo">
+                    💸
+                </div>
+
+                <div>
+
+                    <small>
+                        Despesas
+                    </small>
+
+                    <strong id="totalDespesas">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-resumo">
+
+                <div class="icone-resumo">
+                    📊
+                </div>
+
+                <div>
+
+                    <small>
+                        Saldo atual
+                    </small>
+
+                    <strong id="saldoAtual">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-resumo">
+
+                <div class="icone-resumo">
+                    👩‍💼
+                </div>
+
+                <div>
+
+                    <small>
+                        Comissões
+                    </small>
+
+                    <strong id="totalComissoes">
+                        0,00 €
+                    </strong>
+
+                
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ABAS
+        ================================================== -->
+
+        <section class="abas-financeiro">
+
+    <button
+        type="button"
+        class="aba-financeiro ativo"
+        data-aba="recebimentos"
+    >
+        💰 Recebimentos
+    </button>
+
+    <button
+        type="button"
+        class="aba-financeiro"
+        data-aba="pagos"
+    >
+        ✅ Pagos
+    </button>
+
+     <button
+    type="button"
+    class="aba-financeiro"
+    data-aba="comissoes"
+>
+    👩‍💼 Comissões
+    </button> 
+    
+    <button
+        type="button"
+        class="aba-financeiro"
+        data-aba="despesas"
+    >
+        💸 Despesas
+    </button>
+
+    <button
+        type="button"
+        class="aba-financeiro"
+        data-aba="fluxo"
+    >
+        📊 Fluxo de Caixa
+    </button>
+
+    <button
+        type="button"
+        class="aba-financeiro"
+        data-aba="indicadores"
+    >
+        📈 Indicadores
+    </button>
+
+</section>
+
+      
+        <!-- =================================================
+             ABA - RECEBIMENTOS
+        ================================================== -->
+
+        <section
+            id="abaRecebimentos"
+            class="aba-conteudo ativa"
+        >
+
+            <div class="cabecalho-aba">
+
+                <div>
+
+                    <h2>
+                        Recebimentos
+                    </h2>
+
+                    <p>
+                        Acompanhe os valores dos atendimentos
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div class="filtros-financeiro">
+
+                <div class="campo-pesquisa">
+
+                    <span>
+                        🔎
+                    </span>
+
+                    <input
+                        type="text"
+                        id="pesquisaRecebimento"
+                        placeholder="Pesquisar cliente ou serviço..."
+                    >
+
+                </div>
+
+
+                <select id="filtroPagamento">
+
+                    <option value="">
+                        Todos
+                    </option>
+
+                    <option value="pendente">
+                        Pendentes
+                    </option>
+
+                    <option value="pago">
+                        Pagos
+                    </option>
+
+                </select>
+
+
+                <select id="filtroFormaPagamento">
+
+                    <option value="">
+                        Todas as formas
+                    </option>
+
+                    <option value="dinheiro">
+                        Dinheiro
+                    </option>
+
+                    <option value="cartao">
+                        Cartão
+                    </option>
+
+                    <option value="mbway">
+                        MB WAY
+                    </option>
+
+                    <option value="transferencia">
+                        Transferência
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- LISTA -->
+
+            <div class="area-lista">
+
+                <div class="titulo-lista">
+
+                    <h3>
+                        Atendimentos
+                    </h3>
+
+                    <span id="contadorRecebimentos">
+                        0 registros
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="listaRecebimentos"
+                    class="lista-financeira"
+                ></div>
+
+
+                <div
+                    id="estadoVazioRecebimentos"
+                    class="estado-vazio"
+                >
+
+                    <div class="estado-icone">
+                        💰
+                    </div>
+
+                    <strong>
+                        Nenhum recebimento encontrado
+                    </strong>
+
+                    <span>
+                        Os atendimentos da Agenda aparecerão aqui.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================================
+             ABA - PAGOS
+        ================================================== -->
+
+        <section
+            id="abaPagos"
+            class="aba-conteudo"
+        >
+
+            <div class="cabecalho-aba">
+
+                <div>
+
+                    <h2>
+                        Pagos
+                    </h2>
+
+                    <p>
+                        Histórico de pagamentos recebidos
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div class="filtros-financeiro">
+
+                <div class="campo-pesquisa">
+
+                    <span>
+                        🔎
+                    </span>
+
+                    <input
+                        type="text"
+                        id="pesquisaPagos"
+                        placeholder="Pesquisar cliente ou serviço..."
+                    >
+
+                </div>
+
+
+                <select id="filtroFormaPagamentoPagos">
+
+                    <option value="">
+                        Todas as formas
+                    </option>
+
+                    <option value="dinheiro">
+                        Dinheiro
+                    </option>
+
+                    <option value="cartao">
+                        Cartão
+                    </option>
+
+                    <option value="mbway">
+                        MB WAY
+                    </option>
+
+                    <option value="transferencia">
+                        Transferência
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- LISTA -->
+
+            <div class="area-lista">
+
+                <div class="titulo-lista">
+
+                    <h3>
+                        Pagamentos realizados
+                    </h3>
+
+                    <span id="contadorPagos">
+                        0 registros
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="listaPagos"
+                    class="lista-financeira"
+                ></div>
+
+
+                <div
+                    id="estadoVazioPagos"
+                    class="estado-vazio"
+                >
+
+                    <div class="estado-icone">
+                        ✅
+                    </div>
+
+                    <strong>
+                        Nenhum pagamento encontrado
+                    </strong>
+
+                    <span>
+                        Os pagamentos realizados aparecerão aqui.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+     ABA - COMISSÕES
+================================================= -->
+
+<section
+    id="abaComissoes"
+    class="aba-conteudo"
+>
+
+    <div class="cabecalho-aba">
+
+        <div>
+
+            <h2>
+                Comissões
+            </h2>
+
+            <p>
+                Acompanhe as comissões das profissionais.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="indicadores-grid">
+
+        <div class="indicador-card">
+
+            <small>
+                Comissões pendentes
+            </small>
+
+            <strong id="comissoesPendentes">
+                0,00 €
+            </strong>
+
+        </div>
+
+
+        <div class="indicador-card">
+
+            <small>
+                Comissões pagas
+            </small>
+
+            <strong id="comissoesPagas">
+                0,00 €
+            </strong>
+
+        </div>
+
+
+        <div class="indicador-card">
+
+            <small>
+                Total de comissões
+            </small>
+
+            <strong id="comissoesTotalAba">
+                0,00 €
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="area-lista">
+
+        <div class="titulo-lista">
+
+            <h3>
+                Profissionais
+            </h3>
+
+            <span id="contadorComissoes">
+                0 profissionais
+            </span>
+
+        </div>
+
+
+        <div
+            id="listaComissoes"
+            class="lista-financeira"
+        >
+        </div>
+
+
+        <div
+            id="estadoVazioComissoes"
+            class="estado-vazio"
+        >
+
+            <div class="estado-icone">
+                👩‍💼
+            </div>
+
+            <strong>
+                Nenhuma comissão registrada
+            </strong>
+
+            <span>
+                As comissões das profissionais aparecerão aqui.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- =================================================
+             ABA - DESPESAS
+        ================================================== -->
+
+        <section
+            id="abaDespesas"
+            class="aba-conteudo"
+        >
+
+            <div class="cabecalho-aba">
+
+                <div>
+
+                    <h2>
+                        Despesas
+                    </h2>
+
+                    <p>
+                        Controle as despesas do negócio
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn-principal"
+                    id="btnNovaDespesa"
+                >
+                    + Nova despesa
+                </button>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div class="filtros-financeiro">
+
+                <div class="campo-pesquisa">
+
+                    <span>
+                        🔎
+                    </span>
+
+                    <input
+                        type="text"
+                        id="pesquisaDespesa"
+                        placeholder="Pesquisar despesa ou categoria..."
+                    >
+
+                </div>
+
+
+                <select id="filtroCategoriaDespesa">
+
+                    <option value="">
+                        Todas as categorias
+                    </option>
+
+                </select>
+
+
+                <select id="filtroStatusDespesa">
+
+                    <option value="">
+                        Todos os status
+                    </option>
+
+                    <option value="pendente">
+                        Pendentes
+                    </option>
+
+                    <option value="paga">
+                        Pagas
+                    </option>
+
+                </select>
+
+
+                <select id="filtroFormaPagamentoDespesa">
+
+                    <option value="">
+                        Todas as formas
+                    </option>
+
+                    <option value="dinheiro">
+                        Dinheiro
+                    </option>
+
+                    <option value="cartao">
+                        Cartão
+                    </option>
+
+                    <option value="mbway">
+                        MB WAY
+                    </option>
+
+                    <option value="transferencia">
+                        Transferência
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- LISTA -->
+
+            <div class="area-lista">
+
+                <div class="titulo-lista">
+
+                    <h3>
+                        Despesas cadastradas
+                    </h3>
+
+                    <span id="contadorDespesas">
+                        0 despesas
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="listaDespesas"
+                    class="lista-financeira"
+                ></div>
+
+
+                <div
+                    id="estadoVazioDespesas"
+                    class="estado-vazio"
+                >
+
+                    <div class="estado-icone">
+                        💸
+                    </div>
+
+                    <strong>
+                        Nenhuma despesa encontrada
+                    </strong>
+
+                    <span>
+                        Cadastre uma nova despesa para começar.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ABA - FLUXO DE CAIXA
+        ================================================== -->
+
+        <section
+            id="abaFluxo"
+            class="aba-conteudo"
+        >
+
+            <div class="cabecalho-aba">
+
+                <div>
+
+                    <h2>
+                        Fluxo de Caixa
+                    </h2>
+
+                    <p>
+                        Acompanhe entradas, saídas e saldo
+                    </p>
+
+                </div>
+
+
+                <div class="filtros-periodo">
+
+                    <input
+                        type="date"
+                        id="dataInicioFluxo"
+                    >
+
+                    <span>
+                        até
+                    </span>
+
+                    <input
+                        type="date"
+                        id="dataFimFluxo"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- CARDS DO FLUXO -->
+
+            <div class="cards-fluxo">
+
+                <div class="card-fluxo entrada">
+
+                    <small>
+                        Entradas
+                    </small>
+
+                    <strong id="fluxoEntradas">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+
+                <div class="card-fluxo saida">
+
+                    <small>
+                        Saídas
+                    </small>
+
+                    <strong id="fluxoSaidas">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+
+                <div class="card-fluxo saldo">
+
+                    <small>
+                        Saldo
+                    </small>
+
+                    <strong id="fluxoSaldo">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOVIMENTAÇÕES -->
+
+            <div class="area-lista">
+
+                <div class="titulo-lista">
+
+                    <h3>
+                        Movimentações
+                    </h3>
+
+                    <span id="contadorMovimentacoes">
+                        0 movimentações
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="listaMovimentacoes"
+                    class="lista-financeira"
+                ></div>
+
+
+                <div
+                    id="estadoVazioFluxo"
+                    class="estado-vazio"
+                >
+
+                    <div class="estado-icone">
+                        📊
+                    </div>
+
+                    <strong>
+                        Nenhuma movimentação encontrada
+                    </strong>
+
+                    <span>
+                        O fluxo de caixa será preenchido conforme houver movimentações.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+ <!-- =================================================
+             ABA - INDICADORES
+        ================================================== -->
+
+        <section
+            id="abaIndicadores"
+            class="aba-conteudo"
+        >
+
+            <div class="cabecalho-aba">
+
+                <div>
+
+                    <h2>
+                        Indicadores
+                    </h2>
+
+                    <p>
+                        Visão geral do desempenho financeiro
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARDS DOS INDICADORES -->
+
+            <div class="indicadores-grid">
+
+                <div class="indicador-card">
+
+                    <small>
+                        Faturamento
+                    </small>
+
+                    <strong id="indicadorFaturamento">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+
+                <div class="indicador-card">
+
+                    <small>
+                        Ticket médio
+                    </small>
+
+                    <strong id="indicadorTicketMedio">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+
+                <div class="indicador-card">
+
+                    <small>
+                        Lucro
+                    </small>
+
+                    <strong id="indicadorLucro">
+                        0,00 €
+                    </strong>
+
+                </div>
+
+
+                <div class="indicador-card">
+
+                    <small>
+                        Atendimentos
+                    </small>
+
+                    <strong id="indicadorAtendimentos">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RECEITA POR SERVIÇO
+            ================================================== -->
+
+            <div class="area-indicadores">
+
+                <div class="titulo-lista">
+
+                    <h3>
+                        Receita por serviço
+                    </h3>
+
+                </div>
+
+
+                <div
+                    id="receitaPorServico"
+                    class="lista-indicadores"
+                ></div>
+
+
+                <div
+                    id="estadoVazioServicos"
+                    class="estado-vazio"
+                >
+
+                    <div class="estado-icone">
+                        💅
+                    </div>
+
+                    <strong>
+                        Nenhuma receita encontrada
+                    </strong>
+
+                    <span>
+                        Os serviços pagos aparecerão aqui.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RECEITA POR PROFISSIONAL
+            ================================================== -->
+
+            <div class="area-indicadores">
+
+                <div class="titulo-lista">
+
+                    <h3>
+                        Receita por profissional
+                    </h3>
+
+                </div>
+
+
+                <div
+                    id="receitaPorProfissional"
+                    class="lista-indicadores"
+                ></div>
+
+
+                <div
+                    id="estadoVazioProfissionais"
+                    class="estado-vazio"
+                >
+
+                    <div class="estado-icone">
+                        👩‍💼
+                    </div>
+
+                    <strong>
+                        Nenhuma receita encontrada
+                    </strong>
+
+                    <span>
+                        Os profissionais com pagamentos registrados aparecerão aqui.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL - NOVA DESPESA
+========================================================= -->
+
+<div
+    id="modalDespesa"
+    class="modal-overlay"
+>
+
+    <div class="modal">
+
+        <div class="modal-cabecalho">
+
+            <div>
+
+                <h2>
+                    Nova despesa
+                </h2>
+
+                <p>
+                    Registre uma nova despesa do negócio.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn-fechar"
+                id="btnFecharModalDespesa"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="formDespesa">
+
+            <div class="form-grid">
+
+
+                <!-- DESCRIÇÃO -->
+
+                <div class="campo campo-grande">
+
+                    <label for="descricaoDespesa">
+                        Descrição *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="descricaoDespesa"
+                        placeholder="Ex.: Produtos, aluguel, materiais..."
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CATEGORIA -->
+
+                <div class="campo">
+
+                    <label for="categoriaDespesa">
+                        Categoria *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="categoriaDespesa"
+                        placeholder="Ex.: Materiais"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- VALOR -->
+
+                <div class="campo">
+
+                    <label for="valorDespesa">
+                        Valor *
+                    </label>
+
+                    <input
+                        type="number"
+                        id="valorDespesa"
+                        min="0"
+                        step="0.01"
+                        placeholder="0,00"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DATA -->
+
+                <div class="campo">
+
+                    <label for="dataVencimentoDespesa">
+                        Data *
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataVencimentoDespesa"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="campo">
+
+                    <label for="statusDespesa">
+                        Status
+                    </label>
+
+                    <select id="statusDespesa">
+
+                        <option value="pendente">
+                            Pendente
+                        </option>
+
+                        <option value="paga">
+                            Paga
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- FORMA DE PAGAMENTO -->
+
+                <div class="campo">
+
+                    <label for="formaPagamentoDespesa">
+                        Forma de pagamento
+                    </label>
+
+                    <select id="formaPagamentoDespesa">
+
+                        <option value="">
+                            Selecionar
+                        </option>
+
+                        <option value="Dinheiro">
+                            Dinheiro
+                        </option>
+
+                        <option value="Cartão">
+                            Cartão
+                        </option>
+
+                        <option value="MB WAY">
+                            MB WAY
+                        </option>
+
+                        <option value="Transferência">
+                            Transferência
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- OBSERVAÇÃO -->
+
+                <div class="campo campo-grande">
+
+                    <label for="observacaoDespesa">
+                        Observação
+                    </label>
+
+                    <textarea
+                        id="observacaoDespesa"
+                        placeholder="Observações sobre a despesa..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTÕES -->
+
+            <div class="modal-botoes">
+
+                <button
+                    type="button"
+                    class="btn-cancelar"
+                    id="btnCancelarDespesa"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn-salvar"
+                >
+                    Salvar despesa
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL - REGISTRAR PAGAMENTO
+========================================================= -->
+
+<div
+    id="modalPagamento"
+    class="modal-financeiro"
+>
+
+    <div class="modal-financeiro-conteudo">
+
+        <div class="modal-financeiro-cabecalho">
+
+            <div>
+
+                <h2>
+                    Registrar pagamento
+                </h2>
+
+                <p>
+                    Confirme a forma de pagamento do atendimento.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-fechar"
+                id="fecharModalPagamento"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- RESUMO DO ATENDIMENTO -->
+
+        <div class="pagamento-resumo">
+
+            <div>
+
+                <span>
+                    Cliente
+                </span>
+
+                <strong id="pagamentoCliente">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Serviço
+                </span>
+
+                <strong id="pagamentoServico">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Valor
+                </span>
+
+                <strong id="pagamentoValor">
+                    0,00 €
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMAS DE PAGAMENTO -->
+
+        <div class="pagamento-forma">
+
+            <label>
+                Forma de pagamento
+            </label>
+
+
+            <div
+                id="formasPagamento"
+                class="formas-pagamento"
+            >
+
+                <!-- As formas serão criadas pelo financeiro.js -->
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTÕES -->
+
+        <div class="modal-financeiro-acoes">
+
+            <button
+                type="button"
+                class="btn-cancelar-pagamento"
+                id="cancelarPagamento"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                type="button"
+                class="btn-confirmar-pagamento"
+                id="confirmarPagamento"
+            >
+                Confirmar pagamento
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="financeiro.js"></script>
+
+
+
+</body>
+
+</html>
