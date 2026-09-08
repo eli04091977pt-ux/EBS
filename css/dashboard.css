@@ -194,3 +194,187 @@ body{
 .menu a.ativo:hover {
     background: rgba(255, 255, 255, 0.12);
 }
+
+/* ===================================================
+   EBS — VERSÃO MOBILE
+   Não altera o visual do computador
+=================================================== */
+
+@media (max-width: 768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    .dashboard{
+        display:flex;
+        flex-direction:column;
+        min-height:100vh;
+    }
+
+    /* ===========================
+       MENU MOBILE
+    =========================== */
+
+    .sidebar{
+        width:100%;
+        min-width:100%;
+        min-height:auto;
+        height:auto;
+
+        position:relative;
+        top:auto;
+
+        padding:12px 12px 10px;
+
+        box-sizing:border-box;
+
+        overflow-x:auto;
+        overflow-y:hidden;
+
+        white-space:nowrap;
+    }
+
+    .logo-menu{
+        width:65px;
+        height:65px;
+        margin:0 auto 8px;
+    }
+
+    .titulo-menu{
+        font-size:14px;
+        margin-bottom:10px;
+    }
+
+    .sidebar hr{
+        margin:8px 0 10px;
+    }
+
+    /* Menu passa para uma linha */
+    .menu{
+        display:flex;
+        flex-direction:row;
+        gap:5px;
+
+        overflow-x:auto;
+        overflow-y:hidden;
+
+        padding-bottom:3px;
+
+        scrollbar-width:none;
+        -ms-overflow-style:none;
+    }
+
+    .menu::-webkit-scrollbar{
+        display:none;
+    }
+
+    .menu a{
+        flex:0 0 auto;
+
+        padding:9px 11px;
+
+        font-size:13px;
+
+        border-radius:8px;
+    }
+
+    /* ===========================
+       CONTEÚDO
+    =========================== */
+
+    .content{
+        width:100%;
+        box-sizing:border-box;
+
+        padding:25px 15px;
+
+        min-width:0;
+    }
+
+    .content h1{
+        font-size:28px;
+        margin-top:0;
+        margin-bottom:10px;
+    }
+
+    .subtitulo{
+        font-size:16px;
+        margin-bottom:25px;
+    }
+
+    /* ===========================
+       CARDS
+    =========================== */
+
+    .cards-dashboard{
+        display:grid;
+
+        grid-template-columns:1fr;
+
+        gap:15px;
+
+        margin-top:25px;
+    }
+
+    .card{
+        width:100%;
+        box-sizing:border-box;
+
+        padding:20px;
+
+        border-radius:14px;
+    }
+
+    .card h3{
+        font-size:15px;
+        margin-bottom:12px;
+    }
+
+    .card h2{
+        font-size:26px;
+    }
+}
+
+
+/* ===================================================
+   TELEMÓVEIS MUITO PEQUENOS
+=================================================== */
+
+@media (max-width: 420px){
+
+    .sidebar{
+        padding-left:8px;
+        padding-right:8px;
+    }
+
+    .logo-menu{
+        width:58px;
+        height:58px;
+    }
+
+    .titulo-menu{
+        font-size:13px;
+    }
+
+    .menu a{
+        font-size:12px;
+        padding:8px 9px;
+    }
+
+    .content{
+        padding:20px 12px;
+    }
+
+    .content h1{
+        font-size:25px;
+    }
+
+    .subtitulo{
+        font-size:15px;
+    }
+
+    .card{
+        padding:18px;
+    }
+}
