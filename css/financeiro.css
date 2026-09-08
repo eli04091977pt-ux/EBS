@@ -2180,151 +2180,258 @@ textarea:focus-visible {
 
     .dashboard {
         display: block;
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
     }
 
 
     .sidebar {
-        position: relative;
-
         width: 100%;
-
+        min-width: 0;
         min-height: auto;
+        height: auto;
 
-        padding:
-            15px;
+        position: relative;
+        left: auto;
+        top: auto;
+        bottom: auto;
 
-        border-right: 0;
+        padding: 18px 14px;
 
-        border-bottom:
-            1px solid #eee1e6;
+        border: none;
+
+        overflow-x: hidden;
+        overflow-y: visible;
     }
 
 
     .logo-menu {
-        width: 70px;
+        width: 80px;
+        height: 80px;
 
-        margin-bottom: 8px;
+        margin-bottom: 10px;
     }
 
 
     .titulo-menu {
-        margin-bottom: 10px;
+        font-size: 15px;
 
-        font-size: 12px;
+        margin-bottom: 14px;
+        padding-bottom: 14px;
     }
 
 
     .sidebar hr {
-        margin:
-            10px 0;
+        margin-bottom: 14px;
     }
 
 
     .menu {
-        display: grid;
+        display: flex;
 
-        grid-template-columns:
-            repeat(2, 1fr);
+        flex-direction: row;
 
         gap: 5px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        padding-bottom: 4px;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+
+    .menu::-webkit-scrollbar {
+        display: none;
     }
 
 
     .menu a {
-        justify-content: center;
+        flex: 0 0 auto;
+
+        width: auto;
 
         padding:
-            9px 7px;
+            9px 10px;
 
-        font-size: 12px;
+        font-size: 13px;
 
-        text-align: center;
+        line-height: 1.3;
+
+        white-space: nowrap;
+
+        justify-content: center;
     }
 
 
     .content {
         width: 100%;
 
+        min-width: 0;
+
         margin-left: 0;
 
         padding:
-            20px 14px 35px;
+            25px 15px 35px;
+
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+
+    /* =========================================
+       CABEÇALHO
+    ========================================= */
+
+    .header-financeiro {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 15px;
+
+        margin-bottom: 20px;
     }
 
 
     .header-financeiro h1 {
-        font-size: 23px;
+        font-size: 28px;
     }
 
 
     .header-financeiro p {
-        font-size: 12px;
+        font-size: 15px;
     }
 
 
-    .resumo-financeiro {
-        grid-template-columns:
-            1fr 1fr;
+    /* =========================================
+       RESUMO
+    ========================================= */
 
-        gap: 10px;
+    .resumo-financeiro {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
     }
 
 
     .card-resumo {
         min-height: 90px;
 
-        padding: 13px;
+        padding: 15px;
 
-        gap: 10px;
+        gap: 12px;
     }
 
 
     .icone-resumo {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
 
-        border-radius: 9px;
-
-        font-size: 17px;
+        font-size: 18px;
     }
 
 
     .card-resumo strong {
-        font-size: 16px;
+        font-size: 18px;
     }
 
 
     .card-resumo small {
-        font-size: 10px;
+        font-size: 11px;
     }
 
 
+    /* =========================================
+       ABAS
+    ========================================= */
+
     .abas-financeiro {
+        width: 100%;
+
         margin-bottom: 15px;
+
+        overflow-x: auto;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+
+    .abas-financeiro::-webkit-scrollbar {
+        display: none;
     }
 
 
     .aba-financeiro {
+        flex: 0 0 auto;
+
         padding:
             9px 12px;
 
-        font-size: 11px;
+        font-size: 12px;
+
+        white-space: nowrap;
     }
 
+
+    /* =========================================
+       CABEÇALHO DAS ABAS
+    ========================================= */
+
+    .cabecalho-aba {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 12px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .cabecalho-aba h2 {
+        font-size: 19px;
+    }
+
+
+    .cabecalho-aba p {
+        font-size: 12px;
+    }
+
+
+    .btn-principal {
+        width: 100%;
+
+        padding:
+            12px 16px;
+
+        font-size: 14px;
+    }
+
+
+    /* =========================================
+       FILTROS
+    ========================================= */
 
     .filtros-financeiro {
         flex-direction: column;
 
         align-items: stretch;
 
+        gap: 10px;
+
         padding: 12px;
     }
 
 
     .campo-pesquisa {
-        min-width: 0;
-
         width: 100%;
+
+        min-width: 0;
     }
 
 
@@ -2332,6 +2439,21 @@ textarea:focus-visible {
         width: 100%;
 
         min-width: 0;
+
+        height: 45px;
+    }
+
+
+    /* =========================================
+       LISTAS
+    ========================================= */
+
+    .area-lista {
+        width: 100%;
+
+        max-width: 100%;
+
+        border-radius: 14px;
     }
 
 
@@ -2352,27 +2474,142 @@ textarea:focus-visible {
 
 
     .lista-financeira {
-        overflow-x: auto;
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
     }
 
 
+    /* =========================================
+       CARDS FINANCEIROS
+    ========================================= */
+
     .financeiro-card {
-        min-width: 720px;
+        display: flex !important;
+
+        flex-wrap: wrap;
+
+        width: 100% !important;
+
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        gap: 10px;
 
         padding:
-            14px 15px;
+            13px 14px;
+    }
 
-        gap: 12px;
+
+    .financeiro-card-principal {
+        flex:
+            1 1 100% !important;
+
+        width: 100% !important;
+
+        min-width: 0 !important;
+
+        grid-column: auto;
+    }
+
+
+    .financeiro-card-info {
+        flex:
+            1 1 130px !important;
+
+        min-width: 0 !important;
+    }
+
+
+    .financeiro-card-valor {
+        flex:
+            0 0 90px !important;
+
+        width: 90px !important;
+
+        font-size: 14px;
+
+        text-align: right;
+    }
+
+
+    .financeiro-card-forma {
+        display: none;
+    }
+
+
+    .financeiro-card-status {
+        flex:
+            0 0 auto !important;
+
+        width: auto !important;
+    }
+
+
+    .financeiro-card-acoes {
+        flex:
+            0 0 auto !important;
+
+        width: auto !important;
+
+        justify-content: flex-start;
+    }
+
+
+    .financeiro-card-principal strong {
+        font-size: 13px;
+    }
+
+
+    .financeiro-card-principal span {
+        font-size: 12px;
+    }
+
+
+    .financeiro-card-info {
+        font-size: 12px;
+    }
+
+
+    .btn-editar-financeiro {
+        padding:
+            7px 10px;
+
+        font-size: 11px;
+    }
+
+
+    /* =========================================
+       DESPESAS
+    ========================================= */
+
+    #listaDespesas {
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        overflow-x: hidden !important;
     }
 
 
     #listaDespesas .item-financeiro {
-        min-width: 720px;
+        width: 100% !important;
+
+        min-width: 0 !important;
+
+        max-width: 100% !important;
 
         padding:
-            14px 15px;
+            13px 14px;
     }
 
+
+    /* =========================================
+       INDICADORES
+    ========================================= */
 
     .indicadores-grid {
         grid-template-columns:
@@ -2394,7 +2631,13 @@ textarea:focus-visible {
     }
 
 
+    /* =========================================
+       FLUXO DE CAIXA
+    ========================================= */
+
     .cards-fluxo {
+        grid-template-columns: 1fr;
+
         gap: 10px;
     }
 
@@ -2414,15 +2657,18 @@ textarea:focus-visible {
     .filtros-periodo {
         display: grid;
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
 
         width: 100%;
+
+        gap: 8px;
     }
 
 
     .filtros-periodo input {
         width: 100%;
+
+        flex: none;
     }
 
 
@@ -2431,17 +2677,9 @@ textarea:focus-visible {
     }
 
 
-    .form-grid {
-        grid-template-columns:
-            1fr;
-    }
-
-
-    .campo-grande {
-        grid-column:
-            auto;
-    }
-
+    /* =========================================
+       MODAL DESPESA
+    ========================================= */
 
     .modal-overlay,
     .modal-financeiro {
@@ -2450,7 +2688,13 @@ textarea:focus-visible {
 
 
     .modal {
+        width: 100%;
+
+        max-width: 100%;
+
         max-height: 94vh;
+
+        border-radius: 14px;
     }
 
 
@@ -2461,15 +2705,60 @@ textarea:focus-visible {
     }
 
 
+    .modal-cabecalho h2,
+    .modal-financeiro-cabecalho h2 {
+        font-size: 19px;
+    }
+
+
     #formDespesa {
         padding:
             18px;
     }
 
 
+    .form-grid {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .campo-grande {
+        grid-column: auto;
+    }
+
+
+    .modal-botoes {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+
+    .btn-cancelar,
+    .btn-salvar {
+        width: 100%;
+    }
+
+
+    /* =========================================
+       MODAL PAGAMENTO
+    ========================================= */
+
+    .modal-financeiro-conteudo {
+        width: 100%;
+
+        max-width: 100%;
+
+        max-height: 94vh;
+
+        border-radius: 14px;
+    }
+
+
     .pagamento-resumo {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
 
         margin:
             15px 18px;
@@ -2504,7 +2793,6 @@ textarea:focus-visible {
     }
 
 }
-
 
 /* =========================================================
    RESPONSIVIDADE - MOBILE PEQUENO
