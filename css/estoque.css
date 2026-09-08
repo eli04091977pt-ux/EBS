@@ -1472,190 +1472,463 @@ textarea {
 
 @media (max-width: 800px) {
 
-    .sidebar {
-        position: relative;
-
-        width: 100%;
-
-        min-height: auto;
-
-        padding: 20px 15px;
-    }
-
     .dashboard {
         display: block;
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
     }
+
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        height: auto;
+
+        position: relative;
+        top: auto;
+
+        padding: 18px 14px;
+
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+
+    .logo-menu {
+        width: 80px;
+        height: 80px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .titulo-menu {
+        font-size: 15px;
+
+        margin-bottom: 14px;
+    }
+
+
+    .sidebar hr {
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================
+       MENU MOBILE
+    ========================================= */
+
+    .menu {
+        display: flex;
+
+        flex-direction: row;
+
+        gap: 5px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        padding-bottom: 4px;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    .menu a {
+        flex: 0 0 auto;
+
+        width: auto;
+
+        padding:
+            9px 10px;
+
+        font-size: 13px;
+
+        line-height: 1.3;
+
+        white-space: nowrap;
+
+        justify-content: center;
+    }
+
+
+    /* =========================================
+       CONTEÚDO
+    ========================================= */
 
     .content {
         width: 100%;
 
+        min-width: 0;
+
         margin-left: 0;
 
-        padding: 25px 18px 40px;
+        padding:
+            25px 15px 35px;
+
+        overflow-x: hidden;
+        overflow-y: visible;
     }
 
-    .menu {
-        display: grid;
 
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 5px;
-    }
-
-    .menu a {
-        font-size: 13px;
-    }
+    /* =========================================
+       CABEÇALHO
+    ========================================= */
 
     .page-header {
-        align-items: flex-start;
-
         flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 15px;
+
+        margin-bottom: 20px;
     }
+
 
     .page-header h1 {
-        font-size: 29px;
+        font-size: 28px;
     }
+
+
+    .page-header p {
+        font-size: 15px;
+    }
+
 
     .page-header .btn {
         width: 100%;
     }
 
+
+    /* =========================================
+       RESUMO
+    ========================================= */
+
     .resumo-grid {
         grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+            1fr 1fr;
 
         gap: 12px;
     }
 
+
     .resumo-card {
+        min-height: 90px;
+
         padding: 15px;
 
-        min-height: 90px;
+        gap: 12px;
     }
+
+
+    .resumo-icon {
+        width: 42px;
+        height: 42px;
+
+        font-size: 19px;
+    }
+
+
+    .resumo-card small {
+        font-size: 11px;
+    }
+
 
     .resumo-card strong {
         font-size: 18px;
     }
 
+
+    /* =========================================
+       ABAS
+    ========================================= */
+
     .abas-estoque {
+        width: 100%;
+
+        margin-bottom: 18px;
+
         flex-wrap: nowrap;
 
         overflow-x: auto;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
+
+
+    .abas-estoque::-webkit-scrollbar {
+        display: none;
+    }
+
 
     .aba-estoque {
-        flex-shrink: 0;
+        flex: 0 0 auto;
+
+        padding:
+            10px 13px;
+
+        font-size: 13px;
+
+        white-space: nowrap;
     }
 
+
+    /* =========================================
+       CABEÇALHO DAS SEÇÕES
+    ========================================= */
+
     .section-head {
-        align-items: flex-start;
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 12px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .section-head h2 {
+        font-size: 21px;
+    }
+
+
+    .section-head p {
+        font-size: 13px;
+    }
+
+
+    .acoes-head {
+        width: 100%;
 
         flex-direction: column;
     }
 
-    .acoes-head {
-        width: 100%;
-    }
 
     .acoes-head .btn {
-        flex: 1;
+        width: 100%;
+
+        flex: none;
     }
+
+
+    /* =========================================
+       FILTROS
+    ========================================= */
 
     .filtros {
         flex-direction: column;
 
         align-items: stretch;
+
+        gap: 10px;
+
+        padding: 12px;
     }
 
+
     .filtros input[type="search"],
+    .filtros input[type="text"],
     .filtros select {
         width: 100%;
 
         min-width: 0;
+
+        height: 45px;
     }
+
+
+    /* =========================================
+       LISTAS
+    ========================================= */
+
+    .lista-card {
+        width: 100%;
+
+        max-width: 100%;
+
+        border-radius: 14px;
+    }
+
 
     .item-card {
         display: flex;
 
         flex-wrap: wrap;
 
-        gap: 13px;
+        gap: 10px;
 
-        padding: 15px;
+        padding: 13px 14px;
     }
+
 
     .item-principal {
         width: 100%;
+
+        min-width: 0;
     }
+
 
     .item-info {
-        flex: 1;
+        flex:
+            1 1 120px;
 
-        min-width: 120px;
+        min-width: 0;
     }
+
 
     .card-actions {
         width: 100%;
 
         justify-content: flex-start;
+
+        gap: 7px;
     }
+
+
+    .card-actions button {
+        padding:
+            7px 10px;
+
+        font-size: 11px;
+    }
+
+
+    /* =========================================
+       ALERTAS
+    ========================================= */
 
     .alert-summary {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
+
+        gap: 10px;
     }
 
-    .form-grid {
-        grid-template-columns:
-            1fr;
+
+    .mini-card {
+        padding:
+            14px 15px;
     }
+
+
+    /* =========================================
+       MODAIS
+    ========================================= */
 
     .modal {
-        padding: 15px;
+        padding: 12px;
+
+        overflow-y: auto;
     }
+
 
     .modal-box,
     .modal-large {
         width: 100%;
 
-        max-height: calc(100vh - 30px);
+        max-width: 100%;
 
-        border-radius: 13px;
+        max-height: calc(100vh - 24px);
+
+        border-radius: 14px;
     }
+
 
     .modal-header {
-        padding: 18px;
+        padding:
+            18px;
+
+        gap: 12px;
     }
+
+
+    .modal-header h3 {
+        font-size: 19px;
+    }
+
+
+    .modal-header p {
+        font-size: 12px;
+    }
+
 
     #formProduto,
     #formFornecedor,
     #formMovimentacao {
-        padding: 18px;
+        padding:
+            18px;
     }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    /* =========================================
+       SUBSEÇÕES
+    ========================================= */
+
+    .subsection {
+        padding: 13px;
+    }
+
 
     .subsection-head {
-        align-items: flex-start;
-
         flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 10px;
     }
+
 
     .subsection-head .btn {
         width: 100%;
     }
 
+
+    /* =========================================
+       CONSUMO
+    ========================================= */
+
     .linha-consumo,
     .consumo-row {
         grid-template-columns: 1fr;
+
+        gap: 10px;
     }
+
+
+    /* =========================================
+       AÇÕES DO MODAL
+    ========================================= */
 
     .modal-actions {
         flex-direction: column-reverse;
+
+        align-items: stretch;
     }
+
 
     .modal-actions .btn {
         width: 100%;
+
+        min-width: 0;
     }
+
 }
 
 /* =========================================================
