@@ -195,186 +195,130 @@ body{
     background: rgba(255, 255, 255, 0.12);
 }
 
-/* ===================================================
-   EBS — VERSÃO MOBILE
-   Não altera o visual do computador
-=================================================== */
+/* =========================================
+   RESPONSIVO
+========================================= */
 
-@media (max-width: 768px){
+@media (max-width: 800px) {
 
-    body{
-        overflow-x:hidden;
+    .sidebar {
+        width: 200px;
+        min-width: 200px;
     }
 
-    .dashboard{
-        display:flex;
-        flex-direction:column;
-        min-height:100vh;
+    .content {
+        padding: 25px 20px;
     }
 
-    /* ===========================
-       MENU MOBILE
-    =========================== */
-
-    .sidebar{
-        width:100%;
-        min-width:100%;
-        min-height:auto;
-        height:auto;
-
-        position:relative;
-        top:auto;
-
-        padding:12px 12px 10px;
-
-        box-sizing:border-box;
-
-        overflow-x:auto;
-        overflow-y:hidden;
-
-        white-space:nowrap;
+    .cards-dashboard {
+        flex-wrap: wrap;
+        justify-content: flex-start;
     }
 
-    .logo-menu{
-        width:65px;
-        height:65px;
-        margin:0 auto 8px;
+    .card {
+        flex: 1 1 180px;
     }
 
-    .titulo-menu{
-        font-size:14px;
-        margin-bottom:10px;
-    }
-
-    .sidebar hr{
-        margin:8px 0 10px;
-    }
-
-    /* Menu passa para uma linha */
-    .menu{
-        display:flex;
-        flex-direction:row;
-        gap:5px;
-
-        overflow-x:auto;
-        overflow-y:hidden;
-
-        padding-bottom:3px;
-
-        scrollbar-width:none;
-        -ms-overflow-style:none;
-    }
-
-    .menu::-webkit-scrollbar{
-        display:none;
-    }
-
-    .menu a{
-        flex:0 0 auto;
-
-        padding:9px 11px;
-
-        font-size:13px;
-
-        border-radius:8px;
-    }
-
-    /* ===========================
-       CONTEÚDO
-    =========================== */
-
-    .content{
-        width:100%;
-        box-sizing:border-box;
-
-        padding:25px 15px;
-
-        min-width:0;
-    }
-
-    .content h1{
-        font-size:28px;
-        margin-top:0;
-        margin-bottom:10px;
-    }
-
-    .subtitulo{
-        font-size:16px;
-        margin-bottom:25px;
-    }
-
-    /* ===========================
-       CARDS
-    =========================== */
-
-    .cards-dashboard{
-        display:grid;
-
-        grid-template-columns:1fr;
-
-        gap:15px;
-
-        margin-top:25px;
-    }
-
-    .card{
-        width:100%;
-        box-sizing:border-box;
-
-        padding:20px;
-
-        border-radius:14px;
-    }
-
-    .card h3{
-        font-size:15px;
-        margin-bottom:12px;
-    }
-
-    .card h2{
-        font-size:26px;
-    }
 }
 
 
-/* ===================================================
-   TELEMÓVEIS MUITO PEQUENOS
-=================================================== */
+@media (max-width: 600px) {
 
-@media (max-width: 420px){
-
-    .sidebar{
-        padding-left:8px;
-        padding-right:8px;
+    .dashboard {
+        display: block;
     }
 
-    .logo-menu{
-        width:58px;
-        height:58px;
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+
+        padding: 18px 14px;
     }
 
-    .titulo-menu{
-        font-size:13px;
+    .logo-menu {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
     }
 
-    .menu a{
-        font-size:12px;
-        padding:8px 9px;
+    .titulo-menu {
+        font-size: 15px;
+        margin-bottom: 14px;
     }
 
-    .content{
-        padding:20px 12px;
+    .sidebar hr {
+        margin-bottom: 14px;
     }
 
-    .content h1{
-        font-size:25px;
+    .menu {
+        display: flex;
+        flex-direction: row;
+
+        gap: 5px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        padding-bottom: 4px;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
-    .subtitulo{
-        font-size:15px;
+    .menu::-webkit-scrollbar {
+        display: none;
     }
 
-    .card{
-        padding:18px;
+    .menu a {
+        flex: 0 0 auto;
+
+        padding: 9px 10px;
+
+        font-size: 13px;
+
+        white-space: nowrap;
     }
+
+    .content {
+        width: 100%;
+        padding: 25px 15px;
+    }
+
+    .content h1 {
+        font-size: 28px;
+    }
+
+    .subtitulo {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    .cards-dashboard {
+        display: flex;
+        flex-direction: column;
+
+        gap: 15px;
+
+        margin-top: 25px;
+    }
+
+    .card {
+        width: 100%;
+        flex: none;
+
+        padding: 20px;
+
+        box-sizing: border-box;
+    }
+
+    .card h3 {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .card h2 {
+        font-size: 26px;
+    }
+
 }
