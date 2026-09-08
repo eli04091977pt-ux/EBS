@@ -939,3 +939,394 @@ body{
 .menu a.ativo:hover {
     background: rgba(255, 255, 255, 0.12);
 }
+
+/* =========================================
+   RESPONSIVO - AGENDA EBS
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .agenda-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .agenda-lateral {
+        min-height: auto;
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 200px;
+        min-width: 200px;
+    }
+
+    .content {
+        padding: 25px 20px;
+    }
+
+    .header-agenda {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .btn-novo {
+        width: 100%;
+    }
+
+    .agenda-principal {
+        padding: 18px;
+    }
+
+    .agenda-lateral {
+        padding: 18px;
+    }
+
+    .barra-data {
+        grid-template-columns: 50px 1fr 80px 50px;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .data-atual h2 {
+        font-size: 28px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .dashboard {
+        display: block;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    /* MENU */
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+
+        padding: 18px 14px;
+
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .logo-menu {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+
+    .titulo-menu {
+        font-size: 15px;
+        margin-bottom: 14px;
+    }
+
+    .sidebar hr {
+        margin-bottom: 14px;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+
+        gap: 5px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        padding-bottom: 4px;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .menu a {
+        flex: 0 0 auto;
+
+        padding: 9px 10px;
+
+        font-size: 13px;
+
+        line-height: 1.3;
+
+        white-space: nowrap;
+    }
+
+    /* CONTEÚDO */
+
+    .content {
+        width: 100%;
+        min-width: 0;
+
+        padding: 25px 15px;
+
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .content h1 {
+        font-size: 28px;
+    }
+
+    .subtitulo {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    /* CABEÇALHO */
+
+    .header-agenda {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 15px;
+
+        margin-bottom: 20px;
+    }
+
+    .btn-novo {
+        width: 100%;
+        padding: 12px 18px;
+        font-size: 15px;
+    }
+
+    /* LAYOUT */
+
+    .agenda-layout {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .agenda-principal {
+        width: 100%;
+        padding: 12px;
+
+        border-radius: 14px;
+
+        overflow-x: auto;
+    }
+
+    /* NAVEGAÇÃO */
+
+    .barra-data {
+        grid-template-columns: 42px minmax(120px, 1fr) 65px 42px;
+
+        gap: 6px;
+
+        padding: 12px;
+    }
+
+    .btn-data {
+        width: 38px;
+        height: 38px;
+        font-size: 15px;
+    }
+
+    .btn-hoje {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .data-atual h2 {
+        font-size: 25px;
+    }
+
+    .data-atual span {
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    /* SEMANA */
+
+    .dias-semana {
+        min-width: 600px;
+        gap: 6px;
+        margin-top: 12px;
+        padding-top: 12px;
+    }
+
+    .dia {
+        padding: 9px 4px;
+    }
+
+    .dia span {
+        font-size: 10px;
+    }
+
+    .dia strong {
+        font-size: 17px;
+    }
+
+    /* GRADE */
+
+    .grade-agenda {
+        min-width: 600px;
+    }
+
+    .cabecalho-agenda {
+        min-width: 600px;
+        grid-template-columns: 55px repeat(4, 1fr);
+        padding: 10px 0;
+    }
+
+    .linha-agenda {
+        min-width: 600px;
+        grid-template-columns: 55px repeat(4, 1fr);
+    }
+
+    .coluna-hora,
+    .profissional {
+        padding: 10px 5px;
+    }
+
+    .coluna-hora {
+        font-size: 12px;
+    }
+
+    .profissional strong {
+        font-size: 12px;
+    }
+
+    .cor-profissional {
+        width: 9px;
+        height: 9px;
+    }
+
+    .hora {
+        padding: 5px;
+        font-size: 11px;
+    }
+
+    .celula {
+        min-height: 45px;
+    }
+
+    /* AGENDAMENTO */
+
+    .agendamento {
+        padding: 8px !important;
+        margin: 4px !important;
+
+        border-radius: 8px;
+
+        overflow: hidden !important;
+    }
+
+    .agendamento .cliente {
+        font-size: 12px !important;
+        margin-bottom: 3px !important;
+    }
+
+    .agendamento .servico {
+        font-size: 11px !important;
+        margin-bottom: 3px !important;
+    }
+
+    .agendamento .horario {
+        font-size: 10px !important;
+    }
+
+    /* PAINEL LATERAL */
+
+    .agenda-lateral {
+        width: 100%;
+        min-height: auto;
+
+        margin-top: 15px;
+
+        padding: 15px;
+
+        border-radius: 14px;
+    }
+
+    .card-resumo {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+
+    .card-resumo p {
+        font-size: 12px;
+    }
+
+    /* LEGENDA */
+
+    .card-legenda {
+        padding: 10px;
+
+        margin-top: 10px;
+        margin-bottom: 12px;
+
+        font-size: 11px;
+    }
+
+    /* MODAL */
+
+    .modal-overlay {
+        padding: 15px;
+    }
+
+    .modal {
+        width: 100%;
+        max-width: 100%;
+
+        max-height: 90vh;
+
+        padding: 20px;
+
+        border-radius: 14px;
+    }
+
+    .modal h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .linha-modal {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 0;
+    }
+
+    .campo {
+        width: 100%;
+    }
+
+    .modal input,
+    .modal select,
+    .modal textarea {
+        font-size: 14px;
+    }
+
+    .modal-botoes {
+        flex-direction: column;
+    }
+
+    .btn-cancelar,
+    .btn-salvar,
+    .btn-excluir {
+        width: 100%;
+    }
+
+}
