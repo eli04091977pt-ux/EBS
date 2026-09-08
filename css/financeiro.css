@@ -3537,3 +3537,29 @@ textarea:focus-visible {
     }
 
 }
+
+/* =========================================================
+   CORREÇÃO FINAL - FINANCEIRO NO MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .dashboard {
+        display: block;
+        width: 100%;
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
+    }
+
+    .content {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 25px 15px 35px !important;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+}
