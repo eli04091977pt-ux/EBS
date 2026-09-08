@@ -738,32 +738,9 @@ body {
     margin-bottom: 0;
 }
 
-
 /* =========================================
    RESPONSIVO
 ========================================= */
-
-@media (max-width: 1100px) {
-
-    .indicadores {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .cliente-card {
-        grid-template-columns:
-            45px
-            1.5fr
-            1fr
-            90px;
-    }
-
-    .cliente-card .coluna-extra {
-        display: none;
-    }
-
-}
-
 
 @media (max-width: 800px) {
 
@@ -776,16 +753,16 @@ body {
         padding: 25px 20px;
     }
 
-    .header-clientes {
-        flex-direction: column;
+    .indicadores {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .filtros {
-        flex-direction: column;
+    .cliente-card {
+        grid-template-columns: 45px 1.5fr 1fr 90px;
     }
 
-    .campo-pesquisa {
-        max-width: none;
+    .cliente-card .coluna-extra {
+        display: none;
     }
 
 }
@@ -801,25 +778,78 @@ body {
         width: 100%;
         min-width: 0;
         min-height: auto;
+
+        padding: 18px 14px;
+    }
+
+    .logo-menu {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+
+    .titulo-menu {
+        font-size: 15px;
+        margin-bottom: 14px;
+    }
+
+    .sidebar hr {
+        margin-bottom: 14px;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+
+        gap: 5px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        padding-bottom: 4px;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .menu a {
+        flex: 0 0 auto;
+
+        padding: 9px 10px;
+
+        font-size: 13px;
+
+        white-space: nowrap;
+    }
+
+    .content {
+        width: 100%;
+        padding: 25px 15px;
+    }
+
+    .header-clientes {
+        flex-direction: column;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    .campo-pesquisa {
+        max-width: none;
+        width: 100%;
     }
 
     .indicadores {
         grid-template-columns: 1fr;
     }
 
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .campo-grande {
-        grid-column: span 1;
-    }
-
     .cliente-card {
-        grid-template-columns:
-            45px
-            1fr
-            80px;
+        grid-template-columns: 45px 1fr 80px;
     }
 
     .cliente-card .telefone,
